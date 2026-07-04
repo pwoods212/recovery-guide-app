@@ -378,6 +378,7 @@ const RED_FLAGS = [
   { id: "weight-loss", text: "Unexplained weight loss alongside the pain" },
   { id: "worst-ever", text: "Sudden, severe pain that's the 'worst you've ever felt'" },
   { id: "worsening", text: "Pain that keeps getting worse day after day, or wakes you up at night, with no improvement" },
+  { id: "calf-swelling", text: "One calf that's swollen, warm, red, or noticeably more painful than the other — especially after a long flight, surgery, or being immobile" },
 ];
 
 function clearGate() {
@@ -455,6 +456,25 @@ const STRETCH_DURATION = {
   "calf__1": "hold, breathe",
   "ankle-foot__0": "30s each",
   "ankle-foot__1": "10 each way",
+  "jaw__1": "within comfortable range",
+  "jaw__2": "hold 5–10s",
+  "neck__2": "gentle, both ways",
+  "shoulder__2": "gentle, little and often",
+  "chest__2": "gentle, both ways",
+  "upper-back__1": "30s, both ways",
+  "upper-back__2": "30s each side",
+  "elbow__2": "gentle, stop if tingling",
+  "wrist-hand__2": "gentle, stop if tingling",
+  "abdomen__2": "gentle, both ways",
+  "lower-back__2": "30s each side",
+  "glutes__2": "gentle, stop if tingling",
+  "hip__2": "30s each side",
+  "hamstring__2": "brief holds only",
+  "quad__1": "gentle hold",
+  "quad__2": "gentle hold only",
+  "it-band__1": "30s each side",
+  "knee__2": "30s each side",
+  "calf__2": "30s, both ways",
 };
 
 /* ---------- Cause data ---------- */
@@ -463,7 +483,15 @@ const DATA = {
     { name: "Masseter / temporalis overactivity (clenching, grinding)", likelihood: "Most common",
       massage: "Masseter (cheek, along the jawline when you clench) and temporalis (side of head above the ear) — small circular pressure with fingertips.",
       stretch: "Gentle jaw-opening stretch: mouth open to first resistance, plus tongue-on-roof-of-mouth relaxed jaw drops.",
-      strengthen: "Not a strengthening issue — focus on relaxation: conscious jaw unclenching through the day, and addressing night grinding (mouthguard, stress management) since strength work can worsen this." } ]
+      strengthen: "Not a strengthening issue — focus on relaxation: conscious jaw unclenching through the day, and addressing night grinding (mouthguard, stress management) since strength work can worsen this." },
+    { name: "TMJ disc displacement (clicking, popping, or catching when opening)", likelihood: "Common",
+      massage: "Same masseter and temporalis release as above, plus very light pressure directly in front of the ear canal where the joint sits.",
+      stretch: "Controlled, small-range opening in front of a mirror — open only to where the click occurs, don't force past it.",
+      strengthen: "Not a strengthening issue — avoid very wide opening (big yawns, hard/chewy foods) while it's irritable. If the jaw ever locks open or shut, or clicking is new and painful, see a dentist or TMJ specialist rather than self-treating." },
+    { name: "Referred tension from the upper neck", likelihood: "Less common",
+      massage: "Upper cervical muscles at the base of the skull and just behind the ear — often more effective here than on the jaw itself.",
+      stretch: "Gentle chin tuck, holding a 'double chin' position.",
+      strengthen: "Deep neck flexor holds (chin tucks) — this is really a neck issue presenting as jaw pain, so treating the neck (see the Neck section) usually helps more than treating the jaw directly." } ]
   },
   neck: { label: "Neck", causes: [
     { name: "Upper trapezius / levator scapulae tightness", likelihood: "Most common",
@@ -473,7 +501,11 @@ const DATA = {
     { name: "Forward head posture from screen use", likelihood: "Very common",
       massage: "Suboccipital muscles at the base of the skull — use fingers or a small ball against a wall.",
       stretch: "Chin tuck + gentle extension, holding a 'double chin' position, repeated.",
-      strengthen: "Deep neck flexors and mid-back extensors (prone Y/T raises) to hold the head back over the shoulders." } ]
+      strengthen: "Deep neck flexors and mid-back extensors (prone Y/T raises) to hold the head back over the shoulders." },
+    { name: "Cervical facet joint irritation (often one-sided, sometimes with headache)", likelihood: "Less common",
+      massage: "Muscles just beside the spine at the base of the skull and upper neck, on the affected side — light pressure.",
+      stretch: "Gentle chin tuck combined with a slow head rotation toward the stiff side, staying well within comfortable range.",
+      strengthen: "Deep neck flexor and mid-back endurance work as above. If pain radiates down the arm with numbness, tingling, or weakness, see a doctor or physio for assessment rather than self-treating — that pattern suggests nerve involvement, not just joint stiffness." } ]
   },
   shoulder: { label: "Shoulder", causes: [
     { name: "Rotator cuff overload / weakness", likelihood: "Most common",
@@ -483,7 +515,11 @@ const DATA = {
     { name: "Tight pecs / upper traps pulling shoulder forward", likelihood: "Common",
       massage: "Pec minor (just below the collarbone) and upper trap.",
       stretch: "Doorway pec stretch, arm at 90°, gentle lean forward.",
-      strengthen: "Scapular retraction (band pull-aparts, rows) to counter rounded-shoulder posture." } ]
+      strengthen: "Scapular retraction (band pull-aparts, rows) to counter rounded-shoulder posture." },
+    { name: "Adhesive capsulitis / frozen shoulder (early stage)", likelihood: "Less common",
+      massage: "Light, general massage around the shoulder only — avoid aggressive massage while it's in an acutely painful, freezing phase.",
+      stretch: "Gentle pendulum swings (lean forward, let the arm hang and swing loosely) — avoid forcing the arm into positions it resists.",
+      strengthen: "Not appropriate in the acute freezing phase. The hallmark of this condition is progressive loss of movement in every direction, not just pain, and it typically moves through distinct phases over months — if you can't reach overhead or behind your back at all, and it's getting stiffer rather than looser, see a physio, since forcing range early on can prolong recovery." } ]
   },
   chest: { label: "Chest", causes: [
     { name: "Pec major/minor tightness from pushing-dominant training or desk posture", likelihood: "Most common",
@@ -493,13 +529,25 @@ const DATA = {
     { name: "Costochondritis (rib cartilage irritation) — mimics chest pain", likelihood: "Less common, seek care if sharp or breathing-related",
       massage: "Light pressure only along the sternum edge — avoid deep pressure if it's sharp or reproduces on breathing.",
       stretch: "Gentle thoracic extension over a foam roller.",
-      strengthen: "Not a strengthening issue — if pain is sharp, worsens with breathing, or doesn't fit a muscular pattern, see a doctor to rule out cardiac or rib causes first." } ]
+      strengthen: "Not a strengthening issue — if pain is sharp, worsens with breathing, or doesn't fit a muscular pattern, see a doctor to rule out cardiac or rib causes first." },
+    { name: "Intercostal muscle strain (from coughing, twisting, or overreaching)", likelihood: "Common",
+      massage: "Directly between the ribs at the sore spot — light pressure, following the direction of the rib.",
+      stretch: "Gentle side-bend and overhead reach on the affected side, only within a comfortable range.",
+      strengthen: "Rotational core work (e.g. gentle trunk rotations) once the acute tenderness has settled, to rebuild capacity for twisting movements." } ]
   },
   "upper-back": { label: "Upper Back", causes: [
     { name: "Postural fatigue in mid-back extensors", likelihood: "Most common",
       massage: "Rhomboids and mid-trapezius, between the shoulder blades — foam roller or lacrosse ball works well.",
       stretch: "Thoracic rotation stretch (seated, rotate toward each side) and cat-cow.",
-      strengthen: "Prone Y-T-W raises and rows to build endurance in postural muscles." } ]
+      strengthen: "Prone Y-T-W raises and rows to build endurance in postural muscles." },
+    { name: "Thoracic facet joint stiffness", likelihood: "Common",
+      massage: "Muscles either side of the thoracic spine (mid-back), moderate pressure with a ball or roller.",
+      stretch: "Thoracic extension over a rolled towel or foam roller, plus seated rotation toward each side.",
+      strengthen: "Same postural extensor work as above — facet stiffness and extensor fatigue often occur together and respond to the same routine." },
+    { name: "Rib (costovertebral) joint dysfunction", likelihood: "Less common",
+      massage: "Around the rib angle close to the spine, on the affected side — light pressure.",
+      stretch: "Seated rotation stretch, breathing deeply into the stretch on each side.",
+      strengthen: "Postural extensor work as above. If it's sharp with breathing and doesn't ease over a few days, get it checked to rule out a rib or lung cause rather than assuming it's muscular." } ]
   },
   elbow: { label: "Elbow", causes: [
     { name: "Lateral epicondylitis / tennis elbow (extensor overload)", likelihood: "Most common",
@@ -509,7 +557,11 @@ const DATA = {
     { name: "Medial epicondylitis / golfer's elbow (flexor overload)", likelihood: "Common",
       massage: "Wrist flexor muscle belly (inner forearm, below the elbow).",
       stretch: "Wrist extension stretch with elbow straight: pull the hand back, palm facing you.",
-      strengthen: "Eccentric wrist flexions, light load, slow lowering phase." } ]
+      strengthen: "Eccentric wrist flexions, light load, slow lowering phase." },
+    { name: "Cubital tunnel syndrome (ulnar nerve irritation)", likelihood: "Less common",
+      massage: "Gentle pressure only around the inner elbow groove — avoid direct, sustained pressure on the nerve itself.",
+      stretch: "Gentle nerve glide: straighten the arm, extend the wrist back, hold briefly, release — should feel like a mild stretch, not tingling.",
+      strengthen: "Avoid prolonged elbow bending (phone calls, sleeping with the elbow tucked) which aggravates this. If you notice tingling or numbness in the ring and little fingers, or grip weakness, see a doctor — ongoing nerve compression can cause lasting damage if left untreated." } ]
   },
   "wrist-hand": { label: "Wrist / Hand", causes: [
     { name: "Forearm flexor/extensor tightness from typing or gripping", likelihood: "Most common",
@@ -519,7 +571,11 @@ const DATA = {
     { name: "De Quervain's / thumb-side tendon irritation (repetitive gripping)", likelihood: "Less common",
       massage: "Light massage along the thumb-side of the wrist, avoid direct pressure if sharp or swollen.",
       stretch: "Gentle thumb-tuck wrist stretch (tuck thumb into fist, bend wrist toward little finger).",
-      strengthen: "Not a first step if swollen or sharp — reduce repetitive gripping load and see a professional if it persists beyond 1–2 weeks." } ]
+      strengthen: "Not a first step if swollen or sharp — reduce repetitive gripping load and see a professional if it persists beyond 1–2 weeks." },
+    { name: "Carpal tunnel syndrome (median nerve compression)", likelihood: "Common",
+      massage: "Forearm flexors and the base of the palm — light pressure, plus gentle wrist mobilisation.",
+      stretch: "Median nerve glide: extend the wrist and fingers back with the elbow straight, gentle hold — stop if it causes tingling.",
+      strengthen: "Keep wrists in a neutral position when typing rather than bent, and take regular breaks from repetitive gripping. If you have numbness or tingling in the thumb, index, or middle finger — especially at night — or notice thumb weakness, see a doctor, since this often needs splinting or treatment beyond self-care." } ]
   },
   abdomen: { label: "Abdomen / Core", causes: [
     { name: "Core/deep stabiliser weakness (bracing dysfunction)", likelihood: "Most common",
@@ -529,7 +585,11 @@ const DATA = {
     { name: "Hip flexor/psoas referral felt as abdominal tightness", likelihood: "Common",
       massage: "Psoas (deep, along the inner hip crease) — light pressure, lying down, only if comfortable.",
       stretch: "Kneeling hip flexor stretch.",
-      strengthen: "Glute bridges and dead bugs to reduce hip flexor dominance." } ]
+      strengthen: "Glute bridges and dead bugs to reduce hip flexor dominance." },
+    { name: "Abdominal wall muscle strain (from coughing, twisting, or heavy lifting)", likelihood: "Common",
+      massage: "Gentle pressure directly along the strained muscle — avoid deep pressure if it's acutely tender.",
+      stretch: "Gentle standing back extension or side reach, staying well within a comfortable range.",
+      strengthen: "Gradual return to planks and rotational core work once the acute tenderness has settled. A visible bulge, or pain that consistently worsens with any strain like coughing, can indicate a hernia — see a doctor rather than self-treating if that's present." } ]
   },
   "lower-back": { label: "Lower Back", causes: [
     { name: "Tight hip flexors + weak glutes (anterior pelvic tilt pattern)", likelihood: "Most common",
@@ -539,7 +599,11 @@ const DATA = {
     { name: "Core/deep stabiliser weakness", likelihood: "Common",
       massage: "Erector spinae (muscles running alongside the spine) — light rolling, avoid direct spine pressure.",
       stretch: "Child's pose and gentle knee-to-chest stretch.",
-      strengthen: "Dead bugs and planks to build deep core stability without spinal loading." } ]
+      strengthen: "Dead bugs and planks to build deep core stability without spinal loading." },
+    { name: "Sacroiliac (SI) joint irritation", likelihood: "Common",
+      massage: "Muscles around the SI joint and glute on the affected side — usually felt just to one side of the very base of the spine.",
+      stretch: "Knee-to-chest stretch and gentle figure-4 stretch on the affected side.",
+      strengthen: "Glute and deep core stability work (bridges, bird-dogs) — the SI joint relies on surrounding muscles for support, so this is often more effective than stretching alone. Pain that's clearly one-sided and worse with standing on one leg or rolling over in bed fits this pattern well." } ]
   },
   glutes: { label: "Glutes", causes: [
     { name: "Piriformis tightness (sciatic-type referral)", likelihood: "Most common",
@@ -549,7 +613,11 @@ const DATA = {
     { name: "General glute weakness from prolonged sitting", likelihood: "Common",
       massage: "Glute max (main glute mass) with a ball, moderate pressure.",
       stretch: "Seated figure-4 stretch or pigeon pose.",
-      strengthen: "Glute bridges, hip thrusts, and banded lateral walks." } ]
+      strengthen: "Glute bridges, hip thrusts, and banded lateral walks." },
+    { name: "Deep gluteal syndrome (sciatic nerve irritation beyond the piriformis)", likelihood: "Less common",
+      massage: "Gentle glute release only — avoid aggressive, deep pressure if pain radiates down the leg, since that can aggravate an irritated nerve.",
+      stretch: "Gentle figure-4 stretch and nerve glides (straighten the leg slowly while seated, easing off if it tingles).",
+      strengthen: "Glute strengthening once the acute irritation has settled. If pain radiates below the knee with numbness, tingling, or weakness, see a physio or doctor — this pattern often needs a different, more targeted approach than general glute tightness." } ]
   },
   hip: { label: "Hip", causes: [
     { name: "Glute medius weakness (hip drop pattern)", likelihood: "Most common",
@@ -559,7 +627,11 @@ const DATA = {
     { name: "Tight hip flexors / TFL", likelihood: "Common",
       massage: "TFL (front-outer hip) and hip flexors.",
       stretch: "Kneeling hip flexor stretch with a slight side-bend away from the tight hip.",
-      strengthen: "Glute bridges to balance hip flexor dominance." } ]
+      strengthen: "Glute bridges to balance hip flexor dominance." },
+    { name: "Greater trochanteric pain syndrome (hip bursitis)", likelihood: "Common",
+      massage: "Directly over the bony point on the outer hip — moderate, not deep pressure, since this area is often already irritated.",
+      stretch: "Standing IT-band-style stretch, leaning away from the affected side.",
+      strengthen: "Glute medius strengthening (side-lying leg raises, banded lateral walks) — weak hip abductors are the main driver here. This pattern is classically worse lying on the affected side at night and with the first steps after resting." } ]
   },
   hamstring: { label: "Hamstring", causes: [
     { name: "Hamstring tightness/overload from sprinting or sudden load increase", likelihood: "Most common",
@@ -569,19 +641,39 @@ const DATA = {
     { name: "Weak glutes causing hamstring overcompensation", likelihood: "Common",
       massage: "Glute max alongside the hamstring.",
       stretch: "Figure-4 stretch for the glute.",
-      strengthen: "Hip thrusts and glute bridges to shift load off the hamstring." } ]
+      strengthen: "Hip thrusts and glute bridges to shift load off the hamstring." },
+    { name: "Proximal hamstring tendinopathy (deep pain at the sit-bone)", likelihood: "Less common",
+      massage: "Very light pressure directly at the sit-bone attachment only — this area is often quite irritable, so avoid aggressive pressure.",
+      stretch: "Avoid aggressive stretching, which tends to aggravate this — brief, gentle holds only if any.",
+      strengthen: "This is the key treatment: slow, heavy resistance work (bridges progressing to single-leg, Romanian deadlifts), ideally guided by a physio since load and range need to be managed carefully. Suspect this over a muscle strain if pain is worse sitting on hard surfaces or after running, rather than during a single sudden movement." } ]
   },
   quad: { label: "Quad / Front Thigh", causes: [
     { name: "Quad tightness from training load or running volume increase", likelihood: "Most common",
       massage: "Quad muscle belly (front of thigh) — foam roll, moderate pressure.",
       stretch: "Standing quad stretch (heel to glute, knee pointing down).",
-      strengthen: "Squats and step-downs, progressed gradually, to build tissue capacity." } ]
+      strengthen: "Squats and step-downs, progressed gradually, to build tissue capacity." },
+    { name: "Quadriceps tendinopathy (at the top of the kneecap)", likelihood: "Common",
+      massage: "Light pressure just above the kneecap along the tendon — avoid deep pressure if it's acutely irritable.",
+      stretch: "Gentle standing quad stretch, within a comfortable range.",
+      strengthen: "Slow, controlled squats and step-downs, progressing gradually — avoid sudden increases in jumping or sprinting load, which is the usual trigger." },
+    { name: "Rectus femoris strain (front-of-thigh, hip-crossing muscle)", likelihood: "Less common",
+      massage: "Mid-thigh, front — avoid direct pressure on a recent acute strain.",
+      stretch: "Gentle standing quad stretch only — avoid overstretching a recent strain.",
+      strengthen: "Gradual eccentric loading (slow lowering during leg extensions or squats) once acute pain has settled. This muscle crosses both the hip and knee, so it's a common strain in kicking sports — pinpoint tenderness higher up near the hip crease is a useful clue it's this rather than the general quad." } ]
   },
   "it-band": { label: "IT Band (Outer Thigh)", causes: [
     { name: "IT band syndrome from weak hip abductors (common in runners)", likelihood: "Most common",
       massage: "Glute medius and TFL (where the IT band originates) rather than the IT band itself — the band is dense connective tissue and doesn't respond much to direct rolling.",
       stretch: "Standing IT band stretch (cross affected leg behind the other, lean away) — helpful but secondary to strength work.",
-      strengthen: "Banded lateral walks and single-leg glute bridges — hip abductor weakness is the primary driver, so this matters more than stretching or rolling." } ]
+      strengthen: "Banded lateral walks and single-leg glute bridges — hip abductor weakness is the primary driver, so this matters more than stretching or rolling." },
+    { name: "Greater trochanteric bursitis referring pain down the IT band", likelihood: "Common",
+      massage: "Directly over the bony point on the outer hip, where the IT band starts — moderate pressure, not deep.",
+      stretch: "Standing IT band stretch, leaning away from the affected side.",
+      strengthen: "Glute medius strengthening (banded lateral walks, side-lying leg raises) — the same underlying weakness drives both the hip and outer-thigh symptoms." },
+    { name: "Meralgia paresthetica (nerve irritation, not muscular)", likelihood: "Less common",
+      massage: "Not usually helpful — this is a nerve issue rather than a muscle one, so massage rarely changes it.",
+      stretch: "No specific stretch helps; avoid tight waistbands, belts, or skinny jeans that compress the nerve at the front of the hip.",
+      strengthen: "Not applicable. The distinguishing sign is burning, tingling, or numbness on the outer thigh rather than a typical ache or tightness — if that's what you're feeling, self-care for muscle tightness won't address the root cause, and it's worth mentioning to a doctor if it persists." } ]
   },
   knee: { label: "Knee", causes: [
     { name: "Quad/VMO weakness or imbalance", likelihood: "Most common",
@@ -591,7 +683,11 @@ const DATA = {
     { name: "Weak glutes causing inward knee collapse", likelihood: "Common",
       massage: "Glute medius and outer hip.",
       stretch: "Figure-4 stretch.",
-      strengthen: "Banded lateral walks and single-leg glute bridges." } ]
+      strengthen: "Banded lateral walks and single-leg glute bridges." },
+    { name: "Patellofemoral pain syndrome (\"runner's knee\")", likelihood: "Very common",
+      massage: "Quads and IT band as above, plus gentle pressure just around the edges of the kneecap.",
+      stretch: "Standing quad stretch, within a comfortable range.",
+      strengthen: "Quad and hip strengthening (step-downs, wall sits), progressed gradually — this is classically pain around or behind the kneecap that's worse on stairs, squatting, or after prolonged sitting, rather than a deep joint-line ache." } ]
   },
   calf: { label: "Calf / Shin", causes: [
     { name: "Calf tightness from training load increase", likelihood: "Most common",
@@ -601,7 +697,11 @@ const DATA = {
     { name: "Shin splints from weak tibialis anterior", likelihood: "Common",
       massage: "Tibialis anterior (front of shin, outside the shin bone) — light pressure.",
       stretch: "Kneeling shin stretch (sit back on heels, tops of feet flat).",
-      strengthen: "Toe raises and resisted dorsiflexion (band around foot) to build shin strength." } ]
+      strengthen: "Toe raises and resisted dorsiflexion (band around foot) to build shin strength." },
+    { name: "Achilles tendinopathy (pain at the back of the heel/lower calf)", likelihood: "Common",
+      massage: "Light pressure along the Achilles tendon itself — avoid aggressive pressure directly on it if acutely painful.",
+      stretch: "Gentle wall calf stretch, both straight- and bent-knee versions, within a comfortable range.",
+      strengthen: "Heel raises with a slow, controlled lowering phase — this is the single most evidence-supported treatment for this condition. Classic pattern: stiffness and pain first thing in the morning or after rest, easing slightly with gentle movement. If the tendon feels like it's given way, or there's a sudden gap or pop, seek urgent care rather than self-treating — that can indicate a rupture." } ]
   },
   "ankle-foot": { label: "Ankle / Foot", causes: [
     { name: "Plantar fasciitis (weak intrinsic foot muscles + tight calf)", likelihood: "Most common",
@@ -611,7 +711,11 @@ const DATA = {
     { name: "Weak ankle stabilisers (recurring rolled ankles)", likelihood: "Common",
       massage: "Peroneals (outer lower leg) — light rolling.",
       stretch: "Ankle circles and calf stretch.",
-      strengthen: "Single-leg balance work and resisted ankle eversion (band) to rebuild stability after a sprain." } ]
+      strengthen: "Single-leg balance work and resisted ankle eversion (band) to rebuild stability after a sprain." },
+    { name: "Metatarsal stress fracture", likelihood: "Less common, seek care if bony and worsening with activity",
+      massage: "Not appropriate — this is a bone injury, not a soft-tissue one, and pressing on it won't help and may hurt.",
+      stretch: "Not appropriate while suspected — continuing to load a stress fracture can progress it to a full fracture.",
+      strengthen: "Not a strengthening issue right now. Suspect this over plantar fasciitis or a sprain if pain is pinpoint on a specific bone in the forefoot, came on gradually with a sudden increase in running or walking volume, worsens with impact, and doesn't ease with rest the way muscular pain usually does — see a doctor for imaging rather than self-treating." } ]
   }
 };
 
