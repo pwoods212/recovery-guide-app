@@ -230,6 +230,11 @@
   .tone-neutral { background: var(--accent-soft); color: var(--accent); }
   .tone-caution { background: var(--warn-bg); color: var(--warn-text); border: 1px solid var(--warn-border); }
 
+  .linked-heading { color: var(--accent); }
+  .linked-card { border: 1.5px solid var(--pine); background: var(--pine-tint); }
+  .linked-card .cause-name { color: var(--pine); }
+  .linked-explanation { font-size: 0.93rem; color: var(--text); margin: 0 0 14px; }
+
   .step-block { padding: 16px 0; border-top: 1px solid var(--border); }
   .step-block:first-of-type { border-top: none; padding-top: 4px; }
   .step-head {
@@ -794,6 +799,80 @@ const DATA = {
   }
 };
 
+/* ---------- Linked patterns: causes that commonly explain pain in TWO regions at once ---------- */
+const LINKED_PATTERNS = [
+  { regions: ["hip", "knee"], title: "Weak hip abductors affecting both the hip and knee",
+    explanation: "Weak glute medius lets the hip drop and the knee collapse inward during walking, running, or stairs — loading both joints from the same root cause. If both ache together, especially during single-leg activity, this is more likely than two unrelated problems.",
+    massage: "Glute medius (side of hip, below the hip bone) with a ball against a wall or floor.",
+    stretch: "Figure-4 stretch (ankle on opposite knee, gentle lean forward).",
+    strengthen: "Side-lying leg raises, banded lateral walks, and single-leg glute bridges." },
+  { regions: ["lower-back", "hip"], title: "Anterior pelvic tilt from tight hip flexors and weak glutes",
+    explanation: "Tight hip flexors tip the pelvis forward, which overloads the lower back while also restricting hip extension — the same imbalance shows up in both places at once.",
+    massage: "Hip flexors (front of hip) and QL (side of lower back, between ribs and pelvis).",
+    stretch: "Kneeling hip flexor stretch, 30–45s each side.",
+    strengthen: "Glute bridges and bird-dogs to build glute and core support for both the hip and lower back." },
+  { regions: ["lower-back", "hamstring"], title: "Nerve tension or glute weakness linking the back and hamstring",
+    explanation: "The sciatic nerve runs from the lower back, through the glute, into the hamstring — irritation at the spine can be felt as hamstring tightness. Weak glutes can also overload both areas during hip extension.",
+    massage: "Erector spinae (alongside the spine, light pressure) and hamstring muscle belly (back of thigh).",
+    stretch: "Knee-to-chest stretch, plus gentle hamstring stretch — ease off immediately if you feel tingling rather than a normal stretch sensation.",
+    strengthen: "Glute bridges and Romanian deadlifts, built up gradually." },
+  { regions: ["knee", "ankle-foot"], title: "Foot mechanics affecting the knee's alignment",
+    explanation: "A collapsing arch or overpronating foot changes how load travels up the leg, which is a common contributor to knee pain in runners — supporting the foot often reduces strain at the knee.",
+    massage: "Calf (with a foam roller) and plantar fascia (sole of the foot, roll on a ball).",
+    stretch: "Wall calf stretch, plus standing quad/IT band stretch.",
+    strengthen: "Intrinsic foot strengthening (short-foot exercises, towel scrunches) alongside glute medius work." },
+  { regions: ["neck", "shoulder"], title: "Forward head posture and rounded shoulders (a linked pattern)",
+    explanation: "A forward head and rounded shoulders commonly occur together from desk and screen posture, each making the other worse — the front (tight pecs, forward head) and back (weak deep neck flexors, weak mid-back) both need addressing.",
+    massage: "Upper traps and suboccipitals (base of skull), plus pec minor (just below the collarbone).",
+    stretch: "Chin tuck + gentle extension, plus doorway pec stretch, arm at 90°.",
+    strengthen: "Deep neck flexor holds (chin tucks) and scapular retraction (band pull-aparts, rows)." },
+  { regions: ["shoulder", "upper-back"], title: "Rounded shoulder posture / scapular dyskinesis",
+    explanation: "Tight chest muscles pull the shoulder blades forward and down, which strains the shoulder joint while forcing the upper back muscles to overwork trying to hold posture upright — extremely common in desk workers.",
+    massage: "Pec minor (below the collarbone) and rhomboids/mid-trapezius (between the shoulder blades).",
+    stretch: "Doorway pec stretch, plus thoracic rotation stretch (seated, rotate toward each side).",
+    strengthen: "Scapular retraction (band pull-aparts, rows) and Prone Y-T-W raises." },
+  { regions: ["chest", "upper-back"], title: "Tight chest pulling against a straining upper back",
+    explanation: "This is the classic 'upper crossed' pattern: tight, overactive muscles in the front (chest) paired with weak, overworked muscles in the back — treating only one side of this pair rarely resolves it fully.",
+    massage: "Pec major/minor (across the chest) and rhomboids/mid-trapezius (between the shoulder blades).",
+    stretch: "Doorway pec stretch, plus thoracic rotation stretch.",
+    strengthen: "Rows and rear-delt work, plus Prone Y-T-W raises." },
+  { regions: ["hip", "it-band"], title: "Weak hip abductors driving both the hip and outer thigh",
+    explanation: "This is very often the same underlying glute medius/TFL weakness presenting in two places at once — the hip and the IT band share the same muscular root cause.",
+    massage: "Glute medius and TFL (front-outer hip).",
+    stretch: "Figure-4 stretch, plus standing IT band stretch (cross affected leg behind the other, lean away).",
+    strengthen: "Banded lateral walks and single-leg glute bridges." },
+  { regions: ["glutes", "lower-back"], title: "Glute weakness overloading the lower back",
+    explanation: "When the glutes aren't pulling their weight during hip extension (walking, running, standing up from a chair), the lower back often takes over that job — and pays the price for it.",
+    massage: "Glute max (main glute mass) and erector spinae (alongside the spine, light rolling).",
+    stretch: "Figure-4 stretch, plus child's pose.",
+    strengthen: "Glute bridges and bird-dogs." },
+  { regions: ["calf", "ankle-foot"], title: "Tight calf overloading the Achilles and plantar fascia",
+    explanation: "The calf, Achilles tendon, and plantar fascia form a continuous chain down the back of the leg — tightness at the top increases strain at the bottom, which is why these two areas so often hurt together.",
+    massage: "Gastrocnemius and soleus (calf) with a foam roller, plus plantar fascia (sole of the foot).",
+    stretch: "Wall calf stretch, plus plantar fascia stretch (pull toes back toward shin).",
+    strengthen: "Heel raises, built up gradually, plus intrinsic foot strengthening (towel scrunches, short-foot exercises)." },
+  { regions: ["quad", "knee"], title: "Quad weakness affecting the kneecap's tracking",
+    explanation: "The quad directly controls how the kneecap tracks in its groove — weakness or imbalance here is one of the most common drivers of anterior knee pain, so treating both together tends to work better than treating the knee alone.",
+    massage: "Quad muscle belly (front of thigh, foam roll), plus gentle pressure around the edges of the kneecap.",
+    stretch: "Standing quad stretch (heel to glute, knee pointing down).",
+    strengthen: "Step-downs and terminal knee extensions, progressed gradually." },
+  { regions: ["jaw", "neck"], title: "Cervical referral linking the neck and jaw",
+    explanation: "The nerves and muscles of the upper neck and jaw are closely linked, so tension or dysfunction in one very often refers into the other — treating the neck often resolves jaw symptoms that don't respond to jaw-focused treatment alone.",
+    massage: "Upper cervical muscles at the base of the skull, plus masseter and temporalis (jaw muscles).",
+    stretch: "Gentle chin tuck, holding a 'double chin' position.",
+    strengthen: "Deep neck flexor holds (chin tucks)." },
+  { regions: ["wrist-hand", "elbow"], title: "Shared forearm muscle overload",
+    explanation: "The same forearm muscles that move the wrist and fingers attach at the elbow, so overuse from typing, gripping, or racquet sports commonly causes pain at both ends of that same muscle group at once.",
+    massage: "Forearm flexors and extensors — roll the full length from elbow to wrist with a ball or opposite thumb.",
+    stretch: "Wrist flexion and extension stretches with the elbow straight, pulling the hand gently in each direction.",
+    strengthen: "Eccentric wrist extensions/flexions (lower a light weight slowly) and grip strengthening." },
+  { regions: ["abdomen", "lower-back"], title: "Core weakness loading the lower back",
+    explanation: "The deep core and lower back work as a team to stabilise the spine — when the front (abdominals) isn't doing its share, the back often compensates and becomes the site of pain.",
+    massage: "Psoas/hip flexors (inner hip crease) and erector spinae (alongside the spine).",
+    stretch: "Cat-cow, plus child's pose and gentle knee-to-chest stretch.",
+    strengthen: "Dead bugs, planks, bird-dogs, and Pallof presses." },
+];
+
 function likelihoodTone(text) {
   const t = text.toLowerCase();
   if (t.includes('seek care') || t.includes('less common')) return 'tone-caution';
@@ -847,6 +926,45 @@ function renderResults(highlightId) {
     : `${DATA[[...selectedKeys][0]].label} pain — likely causes`;
 
   causesList.innerHTML = '';
+
+  if (count > 1) {
+    const matches = LINKED_PATTERNS.filter(p => p.regions.every(r => selectedKeys.has(r)));
+    if (matches.length > 0) {
+      const linkedHeading = document.createElement('h3');
+      linkedHeading.className = 'region-heading linked-heading';
+      linkedHeading.textContent = `Could ${matches.length > 1 ? 'these be' : 'this be'} one shared cause?`;
+      causesList.appendChild(linkedHeading);
+
+      matches.forEach(pattern => {
+        const card = document.createElement('div');
+        card.className = 'cause-card linked-card';
+        card.innerHTML = `
+          <div class="likelihood-pill tone-primary">Linked: ${pattern.regions.map(r => DATA[r].label).join(' + ')}</div>
+          <h3 class="cause-name">${pattern.title}</h3>
+          <p class="linked-explanation">${pattern.explanation}</p>
+
+          <div class="step-block">
+            <div class="step-head"><span class="step-num">1</span><span class="step-label">Massage</span></div>
+            <p>${pattern.massage}</p>
+          </div>
+          <div class="step-block">
+            <div class="step-head"><span class="step-num">2</span><span class="step-label">Stretch</span></div>
+            <p>${pattern.stretch}</p>
+          </div>
+          <div class="step-block">
+            <div class="step-head"><span class="step-num">3</span><span class="step-label">Strengthen</span></div>
+            <p>${pattern.strengthen}</p>
+          </div>
+        `;
+        causesList.appendChild(card);
+      });
+
+      const perAreaHeading = document.createElement('h3');
+      perAreaHeading.className = 'region-heading';
+      perAreaHeading.textContent = 'Or, causes specific to each area';
+      causesList.appendChild(perAreaHeading);
+    }
+  }
 
   Object.entries(DATA).forEach(([key, area]) => {
     if (!selectedKeys.has(key)) return;
