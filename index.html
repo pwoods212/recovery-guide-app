@@ -168,40 +168,6 @@
   }
   .divider-or::before, .divider-or::after { content: ""; flex: 1; height: 1px; background: var(--border); }
 
-  .figure-section {
-    background: var(--surface-raised); border: 1px solid var(--border);
-    border-radius: 18px; box-shadow: var(--shadow); padding: 22px 20px 18px; margin-bottom: 22px;
-  }
-  .view-toggle {
-    display: flex; background: var(--bg); border-radius: 999px; padding: 4px;
-    gap: 4px; margin: 0 auto 16px; max-width: 220px;
-  }
-  .view-toggle button {
-    flex: 1; background: transparent; border: none; color: var(--muted);
-    border-radius: 999px; padding: 8px 10px; font-family: var(--font-body);
-    font-weight: 600; font-size: 0.85rem; cursor: pointer;
-  }
-  .view-toggle button.active { background: var(--pine); color: #fbfbf7; }
-  .figure-wrap {
-    position: relative; width: 100%; max-width: 220px; margin: 0 auto 6px; aspect-ratio: 1 / 2.05;
-  }
-  .figure-wrap::before {
-    content: ""; position: absolute; inset: -8%;
-    background: radial-gradient(circle, var(--pine-tint) 0%, transparent 68%); z-index: 0;
-  }
-  .figure-wrap svg.figure-view { width: 100%; height: 100%; display: block; position: relative; z-index: 1; }
-  .figure-view { display: none; }
-  .figure-view.active { display: block; }
-  div.figure-view { position: absolute; inset: 0; z-index: 2; }
-  .hotspot {
-    position: absolute; width: 20px; height: 20px; border-radius: 50%;
-    background: var(--accent-soft); border: 2px solid var(--accent); opacity: 0.55;
-    cursor: pointer; transform: translate(-50%, -50%); padding: 0; transition: transform .15s;
-  }
-  .hotspot:hover { opacity: 0.9; transform: translate(-50%, -50%) scale(1.1); }
-  .hotspot.active { background: var(--accent); opacity: 1; box-shadow: 0 0 0 4px var(--accent-soft); }
-  .figure-hint { text-align: center; color: var(--muted); font-size: 0.82rem; margin: 10px 0 0; }
-
   .grid-label {
     display: flex; align-items: center; justify-content: space-between;
     font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em;
@@ -381,20 +347,6 @@
 
     <div class="divider-or">or browse by body area</div>
 
-    <div class="figure-section">
-      <div class="view-toggle">
-        <button id="frontViewBtn" class="active" type="button">Front</button>
-        <button id="backViewBtn" type="button">Back</button>
-      </div>
-      <div class="figure-wrap">
-        <svg id="frontFigure" class="figure-view active" viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg"></svg>
-        <svg id="backFigure" class="figure-view" viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg"></svg>
-        <div id="frontHotspots" class="figure-view active"></div>
-        <div id="backHotspots" class="figure-view"></div>
-      </div>
-      <p class="figure-hint">Tap the figure — or use the list below. Select as many areas as apply.</p>
-    </div>
-
     <div class="grid-label">All areas <button class="clear-btn" id="clearBtn" type="button">Clear selection</button></div>
     <div class="grid" id="areaGrid"></div>
 
@@ -479,11 +431,8 @@ const BODY_SHAPE = `
   <ellipse cx="42" cy="195" rx="8" ry="5" fill="var(--pine)"/>
   <ellipse cx="58" cy="195" rx="8" ry="5" fill="var(--pine)"/>
 `;
-document.getElementById('frontFigure').innerHTML = BODY_SHAPE;
-document.getElementById('backFigure').innerHTML = BODY_SHAPE;
-
 // Every region's exact landmark point(s) on the 0-100 x / 0-200 y figure — the SAME
-// coordinates used to draw the body above, so hotspots always land precisely on the part.
+// coordinates used to draw the body above, so the massage marker always lands precisely on the part.
 const REGION_POINTS = {
   jaw: [{ x: 50, y: 21 }],
   neck: [{ x: 50, y: 30 }],
@@ -503,15 +452,8 @@ const REGION_POINTS = {
   calf: [{ x: 41, y: 163 }, { x: 59, y: 163 }],
   "ankle-foot": [{ x: 42, y: 184 }, { x: 58, y: 184 }],
 };
-const REGION_VIEW = {
-  jaw: 'front', neck: 'front', shoulder: 'front', chest: 'front', "upper-back": 'back',
-  elbow: 'front', "wrist-hand": 'front', abdomen: 'front', "lower-back": 'back',
-  glutes: 'back', hip: 'front', hamstring: 'back', quad: 'front', "it-band": 'back',
-  knee: 'front', calf: 'back', "ankle-foot": 'front'
-};
-const BOTH_VIEW_KEYS = ['knee', 'calf', 'ankle-foot'];
 
-function miniFigureSVG(view, points) {
+function miniFigureSVG(points) {
   const glow = points.map(p => `
     <circle cx="${p.x}" cy="${p.y}" r="11" fill="var(--accent)" opacity="0.3"/>
     <circle cx="${p.x}" cy="${p.y}" r="5" fill="var(--accent)"/>
@@ -850,51 +792,6 @@ function likelihoodTone(text) {
   return 'tone-neutral';
 }
 
-/* ---------- Hotspots (derived from REGION_POINTS — always aligned to the figure) ---------- */
-const HOTSPOTS = { front: [], back: [] };
-Object.entries(REGION_POINTS).forEach(([key, pts]) => {
-  const primary = REGION_VIEW[key];
-  pts.forEach(p => HOTSPOTS[primary].push({ key, top: p.y / 2, left: p.x }));
-  if (BOTH_VIEW_KEYS.includes(key)) {
-    const other = primary === 'front' ? 'back' : 'front';
-    pts.forEach(p => HOTSPOTS[other].push({ key, top: p.y / 2, left: p.x }));
-  }
-});
-
-function buildHotspots(containerId, list) {
-  const container = document.getElementById(containerId);
-  list.forEach(spot => {
-    const btn = document.createElement('button');
-    btn.className = 'hotspot';
-    btn.type = 'button';
-    btn.dataset.key = spot.key;
-    btn.style.top = spot.top + '%';
-    btn.style.left = spot.left + '%';
-    btn.title = DATA[spot.key].label;
-    btn.addEventListener('click', () => toggleKey(spot.key));
-    container.appendChild(btn);
-  });
-}
-buildHotspots('frontHotspots', HOTSPOTS.front);
-buildHotspots('backHotspots', HOTSPOTS.back);
-
-document.getElementById('frontViewBtn').addEventListener('click', () => {
-  document.getElementById('frontViewBtn').classList.add('active');
-  document.getElementById('backViewBtn').classList.remove('active');
-  document.getElementById('frontFigure').classList.add('active');
-  document.getElementById('frontHotspots').classList.add('active');
-  document.getElementById('backFigure').classList.remove('active');
-  document.getElementById('backHotspots').classList.remove('active');
-});
-document.getElementById('backViewBtn').addEventListener('click', () => {
-  document.getElementById('backViewBtn').classList.add('active');
-  document.getElementById('frontViewBtn').classList.remove('active');
-  document.getElementById('backFigure').classList.add('active');
-  document.getElementById('backHotspots').classList.add('active');
-  document.getElementById('frontFigure').classList.remove('active');
-  document.getElementById('frontHotspots').classList.remove('active');
-});
-
 /* ---------- Area chips, selection, results ---------- */
 const grid = document.getElementById('areaGrid');
 const results = document.getElementById('results');
@@ -956,8 +853,7 @@ function renderResults(highlightId) {
       const causeId = `${key}__${idx}`;
       const poseInfo = CAUSE_POSE[causeId];
       const poseSVG = poseInfo ? POSES[poseInfo.pose] : '';
-      const view = REGION_VIEW[key];
-      const miniFig = miniFigureSVG(view, REGION_POINTS[key]);
+      const miniFig = miniFigureSVG(REGION_POINTS[key]);
 
       const card = document.createElement('div');
       card.className = 'cause-card';
