@@ -1,8 +1,9 @@
-const CACHE_NAME = "recovery-guide-v2";
+const CACHE_NAME = "recovery-guide-v3";
 const ASSETS = [
   "./",
   "./index.html",
   "./guide.html",
+  "./disclaimer.html",
   "./manifest.json",
   "./icons/icon-192.png",
   "./icons/icon-512.png",

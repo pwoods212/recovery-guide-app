@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms &amp; Medical Disclaimer — Recovery Guide</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2f4a3d">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #edefea; --surface-raised: #ffffff; --text: #1b211d; --muted: #5c665f;
+    --border: #dce0d6; --accent: #c1622e; --accent-soft: #f1e1d3;
+    --pine: #2f4a3d; --pine-tint: #e2e9e1;
+    --warn-bg: #f7ecd3; --warn-border: #d9bb74; --warn-text: #7a5a12;
+    --shadow: 0 1px 2px rgba(27,33,29,0.04), 0 8px 24px rgba(27,33,29,0.06);
+    --font-display: 'Fraunces', ui-serif, Georgia, serif;
+    --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14180f; --surface-raised: #212821; --text: #ecefea; --muted: #9bab9c;
+      --border: #2c342c; --accent: #e08a4f; --accent-soft: #3a2a1e;
+      --pine: #8fc3a4; --pine-tint: #1f2b23;
+      --warn-bg: #2e2716; --warn-border: #6b5522; --warn-text: #e0b84f;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14180f; --surface-raised: #212821; --text: #ecefea; --muted: #9bab9c;
+    --border: #2c342c; --accent: #e08a4f; --accent-soft: #3a2a1e;
+    --pine: #8fc3a4; --pine-tint: #1f2b23; --warn-bg: #2e2716; --warn-border: #6b5522; --warn-text: #e0b84f;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+  }
+  :root[data-theme="light"] {
+    --bg: #edefea; --surface-raised: #ffffff; --text: #1b211d; --muted: #5c665f;
+    --border: #dce0d6; --accent: #c1622e; --accent-soft: #f1e1d3;
+    --pine: #2f4a3d; --pine-tint: #e2e9e1; --warn-bg: #f7ecd3; --warn-border: #d9bb74; --warn-text: #7a5a12;
+    --shadow: 0 1px 2px rgba(27,33,29,0.04), 0 8px 24px rgba(27,33,29,0.06);
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .hero-band { background: var(--pine); padding: 30px 20px 26px; }
+  .hero-inner { max-width: 640px; margin: 0 auto; }
+  .back-link {
+    display: inline-block; color: rgba(251,251,247,0.85); font-family: var(--font-mono);
+    font-size: 0.78rem; text-decoration: none; margin-bottom: 14px;
+  }
+  .back-link:hover { color: #fbfbf7; }
+  .hero-inner h1 {
+    font-family: var(--font-display); font-weight: 600; font-size: 1.6rem; color: #fbfbf7; margin: 0; text-wrap: balance;
+  }
+  .hero-inner .updated {
+    color: rgba(251,251,247,0.7); font-family: var(--font-mono); font-size: 0.75rem; margin: 8px 0 0;
+  }
+
+  .wrap { max-width: 640px; margin: 0 auto; padding: 32px 20px 90px; }
+
+  .notice {
+    background: var(--warn-bg); border: 1px solid var(--warn-border); border-radius: 12px;
+    padding: 18px 20px; margin-bottom: 30px;
+  }
+  .notice strong { color: var(--warn-text); }
+  .notice p { margin: 6px 0 0; font-size: 0.93rem; }
+
+  section { margin-bottom: 30px; }
+  section h2 {
+    font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; margin: 0 0 10px;
+  }
+  section p, section li { font-size: 0.92rem; margin: 0 0 8px; }
+  section ul { margin: 0 0 8px; padding-left: 20px; }
+
+  .meta-note {
+    background: var(--pine-tint); border-radius: 10px; padding: 14px 16px; font-size: 0.85rem;
+    color: var(--text); margin-top: 34px;
+  }
+  .meta-note strong { color: var(--pine); }
+
+  .cta-back {
+    display: inline-block; margin-top: 10px; background: var(--pine); color: #fbfbf7;
+    text-decoration: none; border-radius: 10px; padding: 13px 22px; font-weight: 600; font-size: 0.95rem;
+  }
+  .cta-back:hover { opacity: 0.9; }
+</style>
+</head>
+<body>
+<header class="hero-band">
+  <div class="hero-inner">
+    <a class="back-link" href="index.html">← Back to Recovery Guide</a>
+    <h1>Terms &amp; Medical Disclaimer</h1>
+    <p class="updated">Last updated: 4 July 2026</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="notice">
+    <strong>Read this before using the app.</strong>
+    <p>By using Recovery Guide, you accept the terms below. If you do not agree, do not use the app.</p>
+  </div>
+
+  <section>
+    <h2>1. Not medical advice</h2>
+    <p>Recovery Guide provides general, educational information about common causes of musculoskeletal pain and common self-care approaches (massage, stretching, strengthening). It is not medical advice, diagnosis, or treatment, and using it does not create a doctor-patient, physiotherapist-patient, or any other clinical relationship between you and the app, its creator, or any contributor.</p>
+    <p>The content is based on general patterns and is not personalised to your medical history, current medications, prior injuries, or any condition you may have. It may be incomplete, generic, or not applicable to your specific situation.</p>
+  </section>
+
+  <section>
+    <h2>2. Always consult a qualified professional</h2>
+    <p>You should consult a doctor, physiotherapist, or other qualified healthcare provider before starting any new exercise, stretching, or self-massage routine — particularly if you:</p>
+    <ul>
+      <li>Are pregnant, elderly, or have a pre-existing injury, chronic condition, or diagnosed medical condition (including but not limited to cardiovascular, neurological, bone/joint, or connective tissue conditions)</li>
+      <li>Are recovering from recent surgery or a recent acute injury</li>
+      <li>Experience any of the "red flag" symptoms the app screens for, or any pain that is severe, sudden, worsening, or persists beyond a couple of weeks</li>
+    </ul>
+    <p>If you are experiencing a medical emergency, call your local emergency services immediately. Do not use this app in place of emergency care.</p>
+  </section>
+
+  <section>
+    <h2>3. Assumption of risk</h2>
+    <p>Physical activity, stretching, and self-massage carry an inherent risk of injury, including but not limited to muscle strain, sprain, or aggravation of an existing condition. By using this app and following any content within it, you do so voluntarily and at your own risk. You are solely responsible for assessing your own fitness to perform any exercise or stretch shown, and for stopping immediately if you experience sharp pain, dizziness, or any symptom that concerns you.</p>
+  </section>
+
+  <section>
+    <h2>4. No warranty</h2>
+    <p>The app and its content are provided "as is" and "as available," without warranties of any kind, express or implied, including but not limited to accuracy, completeness, reliability, or fitness for a particular purpose. We do not warrant that the content is error-free or that following it will improve, resolve, or prevent any pain or condition.</p>
+  </section>
+
+  <section>
+    <h2>5. Limitation of liability</h2>
+    <p>To the fullest extent permitted by applicable law, the creator and operator of Recovery Guide shall not be liable for any injury, loss, or damage of any kind — direct, indirect, incidental, or consequential — arising from or related to your use of the app, reliance on its content, or performance of any exercise, stretch, or self-massage technique described within it.</p>
+    <p>Nothing in these terms is intended to exclude or limit liability that cannot lawfully be excluded or limited under the laws applicable to you (for example, liability for death or personal injury caused by proven negligence, where such exclusion is not permitted by law).</p>
+  </section>
+
+  <section>
+    <h2>6. Subscription and use</h2>
+    <p>Where the app is offered on a paid subscription basis, continued use of the app after any update to these terms constitutes acceptance of the updated terms. Subscription pricing, billing, and cancellation terms will be presented separately at the point of payment.</p>
+  </section>
+
+  <section>
+    <h2>7. Changes to these terms</h2>
+    <p>These terms may be updated from time to time. The "last updated" date above reflects the most recent revision. Continued use of the app after changes are posted constitutes acceptance of the revised terms.</p>
+  </section>
+
+  <div class="meta-note">
+    <strong>Note to the app owner:</strong> this page is a reasonable starting template, not legal advice, and it was written by an AI assistant rather than a solicitor. Before charging for this app, have an actual solicitor (particularly one familiar with consumer contracts and health/wellness apps in your jurisdiction) review and finalise these terms, and confirm what disclosure or registration requirements apply to a paid health-adjacent product where you operate.
+  </div>
+
+  <a class="cta-back" href="index.html">Back to the recovery tool →</a>
+</div>
+</body>
+</html>
