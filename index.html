@@ -475,6 +475,13 @@ const STRETCH_DURATION = {
   "it-band__1": "30s each side",
   "knee__2": "30s each side",
   "calf__2": "30s, both ways",
+  "shoulder__3": "gentle, within range",
+  "elbow__3": "gentle, within range",
+  "glutes__3": "hold, breathe",
+  "hamstring__3": "gentle, stop if tingling",
+  "it-band__3": "30s each side",
+  "knee__3": "gentle hold",
+  "ankle-foot__3": "10 each way",
 };
 
 /* ---------- Cause data ---------- */
@@ -491,7 +498,11 @@ const DATA = {
     { name: "Referred tension from the upper neck", likelihood: "Less common",
       massage: "Upper cervical muscles at the base of the skull and just behind the ear — often more effective here than on the jaw itself.",
       stretch: "Gentle chin tuck, holding a 'double chin' position.",
-      strengthen: "Deep neck flexor holds (chin tucks) — this is really a neck issue presenting as jaw pain, so treating the neck (see the Neck section) usually helps more than treating the jaw directly." } ]
+      strengthen: "Deep neck flexor holds (chin tucks) — this is really a neck issue presenting as jaw pain, so treating the neck (see the Neck section) usually helps more than treating the jaw directly." },
+      { name: "Dental bite misalignment (malocclusion) driving jaw muscle overload", likelihood: "Less common",
+        massage: "General masseter and temporalis relaxation as above — this can ease symptoms but won't fix the underlying cause.",
+        stretch: "Not appropriate — a bite issue isn't a stretch problem.",
+        strengthen: "Not applicable. If jaw pain persists despite relaxation and self-care, or you notice uneven wear on your teeth, see a dentist for a bite assessment rather than continuing to self-treat the muscles alone." } ]
   },
   neck: { label: "Neck", causes: [
     { name: "Upper trapezius / levator scapulae tightness", likelihood: "Most common",
@@ -505,7 +516,11 @@ const DATA = {
     { name: "Cervical facet joint irritation (often one-sided, sometimes with headache)", likelihood: "Less common",
       massage: "Muscles just beside the spine at the base of the skull and upper neck, on the affected side — light pressure.",
       stretch: "Gentle chin tuck combined with a slow head rotation toward the stiff side, staying well within comfortable range.",
-      strengthen: "Deep neck flexor and mid-back endurance work as above. If pain radiates down the arm with numbness, tingling, or weakness, see a doctor or physio for assessment rather than self-treating — that pattern suggests nerve involvement, not just joint stiffness." } ]
+      strengthen: "Deep neck flexor and mid-back endurance work as above. If pain radiates down the arm with numbness, tingling, or weakness, see a doctor or physio for assessment rather than self-treating — that pattern suggests nerve involvement, not just joint stiffness." },
+    { name: "Whiplash-associated disorder (after a collision, fall, or heavy impact)", likelihood: "Less common, seek care after any significant impact",
+      massage: "Not appropriate immediately after significant trauma until assessed.",
+      stretch: "Not appropriate immediately after significant trauma until assessed.",
+      strengthen: "Not applicable at first. After any real collision or heavy impact to the head or neck — common in rugby, cycling, and other contact sports — get assessed by a medical professional before self-treating, even if it initially just feels like ordinary stiffness." } ]
   },
   shoulder: { label: "Shoulder", causes: [
     { name: "Rotator cuff overload / weakness", likelihood: "Most common",
@@ -519,7 +534,11 @@ const DATA = {
     { name: "Adhesive capsulitis / frozen shoulder (early stage)", likelihood: "Less common",
       massage: "Light, general massage around the shoulder only — avoid aggressive massage while it's in an acutely painful, freezing phase.",
       stretch: "Gentle pendulum swings (lean forward, let the arm hang and swing loosely) — avoid forcing the arm into positions it resists.",
-      strengthen: "Not appropriate in the acute freezing phase. The hallmark of this condition is progressive loss of movement in every direction, not just pain, and it typically moves through distinct phases over months — if you can't reach overhead or behind your back at all, and it's getting stiffer rather than looser, see a physio, since forcing range early on can prolong recovery." } ]
+      strengthen: "Not appropriate in the acute freezing phase. The hallmark of this condition is progressive loss of movement in every direction, not just pain, and it typically moves through distinct phases over months — if you can't reach overhead or behind your back at all, and it's getting stiffer rather than looser, see a physio, since forcing range early on can prolong recovery." },
+    { name: "SLAP tear / labral injury (common in throwing and overhead athletes)", likelihood: "Less common",
+      massage: "General shoulder massage as above — won't resolve a labral tear but can ease surrounding muscle tension.",
+      stretch: "Gentle range of motion only — avoid forcing overhead positions that reproduce a deep catching or clunking sensation.",
+      strengthen: "Rotator cuff and scapular control work can help support the shoulder, but a deep catching, clunking, or locking sensation with overhead movement — especially in throwing, swimming, or racquet sports — is worth having assessed by a sports physio or doctor rather than pushing through it." } ]
   },
   chest: { label: "Chest", causes: [
     { name: "Pec major/minor tightness from pushing-dominant training or desk posture", likelihood: "Most common",
@@ -533,7 +552,11 @@ const DATA = {
     { name: "Intercostal muscle strain (from coughing, twisting, or overreaching)", likelihood: "Common",
       massage: "Directly between the ribs at the sore spot — light pressure, following the direction of the rib.",
       stretch: "Gentle side-bend and overhead reach on the affected side, only within a comfortable range.",
-      strengthen: "Rotational core work (e.g. gentle trunk rotations) once the acute tenderness has settled, to rebuild capacity for twisting movements." } ]
+      strengthen: "Rotational core work (e.g. gentle trunk rotations) once the acute tenderness has settled, to rebuild capacity for twisting movements." },
+    { name: "Pectoral muscle strain or tear (common in bench press or heavy pushing)", likelihood: "Less common",
+      massage: "Avoid deep pressure on a recent acute strain — light pressure only, well away from any bruising.",
+      stretch: "Avoid stretching a recent strain or tear — it needs rest and staged reloading first, not stretching.",
+      strengthen: "A gradual, staged return to pushing load once healed, ideally guided by a physio for anything beyond a mild strain. A sudden sharp pain during a heavy lift, especially with bruising or visible deformity afterward, suggests a strain or partial tear rather than simple tightness, and needs a different rehab approach — sometimes with imaging first." } ]
   },
   "upper-back": { label: "Upper Back", causes: [
     { name: "Postural fatigue in mid-back extensors", likelihood: "Most common",
@@ -547,7 +570,11 @@ const DATA = {
     { name: "Rib (costovertebral) joint dysfunction", likelihood: "Less common",
       massage: "Around the rib angle close to the spine, on the affected side — light pressure.",
       stretch: "Seated rotation stretch, breathing deeply into the stretch on each side.",
-      strengthen: "Postural extensor work as above. If it's sharp with breathing and doesn't ease over a few days, get it checked to rule out a rib or lung cause rather than assuming it's muscular." } ]
+      strengthen: "Postural extensor work as above. If it's sharp with breathing and doesn't ease over a few days, get it checked to rule out a rib or lung cause rather than assuming it's muscular." },
+    { name: "Serratus anterior weakness / scapular winging (common in overhead and throwing athletes)", likelihood: "Less common",
+      massage: "General upper back massage as above.",
+      stretch: "General thoracic mobility work as above.",
+      strengthen: "Serratus punches and push-up-plus exercises specifically — this is often the missing piece when general upper-back strengthening isn't resolving symptoms in overhead or throwing athletes, since it targets scapular control rather than just postural endurance." } ]
   },
   elbow: { label: "Elbow", causes: [
     { name: "Lateral epicondylitis / tennis elbow (extensor overload)", likelihood: "Most common",
@@ -561,7 +588,11 @@ const DATA = {
     { name: "Cubital tunnel syndrome (ulnar nerve irritation)", likelihood: "Less common",
       massage: "Gentle pressure only around the inner elbow groove — avoid direct, sustained pressure on the nerve itself.",
       stretch: "Gentle nerve glide: straighten the arm, extend the wrist back, hold briefly, release — should feel like a mild stretch, not tingling.",
-      strengthen: "Avoid prolonged elbow bending (phone calls, sleeping with the elbow tucked) which aggravates this. If you notice tingling or numbness in the ring and little fingers, or grip weakness, see a doctor — ongoing nerve compression can cause lasting damage if left untreated." } ]
+      strengthen: "Avoid prolonged elbow bending (phone calls, sleeping with the elbow tucked) which aggravates this. If you notice tingling or numbness in the ring and little fingers, or grip weakness, see a doctor — ongoing nerve compression can cause lasting damage if left untreated." },
+    { name: "Distal biceps tendinopathy or strain (common with heavy pulling/curling)", likelihood: "Less common",
+      massage: "Light pressure at the front of the elbow crease — avoid deep pressure on an acute strain.",
+      stretch: "Gentle elbow extension with the palm facing up, within a comfortable range.",
+      strengthen: "Slow eccentric bicep curls once acute pain has settled. Suspect this over tennis or golfer's elbow if the pain sits at the front of the elbow crease rather than the sides, particularly after heavy pulling or curling load." } ]
   },
   "wrist-hand": { label: "Wrist / Hand", causes: [
     { name: "Forearm flexor/extensor tightness from typing or gripping", likelihood: "Most common",
@@ -575,7 +606,11 @@ const DATA = {
     { name: "Carpal tunnel syndrome (median nerve compression)", likelihood: "Common",
       massage: "Forearm flexors and the base of the palm — light pressure, plus gentle wrist mobilisation.",
       stretch: "Median nerve glide: extend the wrist and fingers back with the elbow straight, gentle hold — stop if it causes tingling.",
-      strengthen: "Keep wrists in a neutral position when typing rather than bent, and take regular breaks from repetitive gripping. If you have numbness or tingling in the thumb, index, or middle finger — especially at night — or notice thumb weakness, see a doctor, since this often needs splinting or treatment beyond self-care." } ]
+      strengthen: "Keep wrists in a neutral position when typing rather than bent, and take regular breaks from repetitive gripping. If you have numbness or tingling in the thumb, index, or middle finger — especially at night — or notice thumb weakness, see a doctor, since this often needs splinting or treatment beyond self-care." },
+    { name: "TFCC injury (common in racquet sports, gymnastics, and weightlifting)", likelihood: "Less common",
+      massage: "Light pressure only on the little-finger side of the wrist — avoid anything that reproduces sharp pain.",
+      stretch: "Avoid rotating or loading the wrist (push-up positions, racquet swings) while it's irritable.",
+      strengthen: "Not a first step — pain on the little-finger side of the wrist that's worse with gripping and rotating (like turning a door handle or a racquet swing) often needs professional assessment, and sometimes a brace, since continuing to load it can delay healing." } ]
   },
   abdomen: { label: "Abdomen / Core", causes: [
     { name: "Core/deep stabiliser weakness (bracing dysfunction)", likelihood: "Most common",
@@ -589,7 +624,11 @@ const DATA = {
     { name: "Abdominal wall muscle strain (from coughing, twisting, or heavy lifting)", likelihood: "Common",
       massage: "Gentle pressure directly along the strained muscle — avoid deep pressure if it's acutely tender.",
       stretch: "Gentle standing back extension or side reach, staying well within a comfortable range.",
-      strengthen: "Gradual return to planks and rotational core work once the acute tenderness has settled. A visible bulge, or pain that consistently worsens with any strain like coughing, can indicate a hernia — see a doctor rather than self-treating if that's present." } ]
+      strengthen: "Gradual return to planks and rotational core work once the acute tenderness has settled. A visible bulge, or pain that consistently worsens with any strain like coughing, can indicate a hernia — see a doctor rather than self-treating if that's present." },
+    { name: "Sports hernia / athletic pubalgia (common in football, hockey, cutting and kicking sports)", likelihood: "Less common",
+      massage: "Not typically helpful for this.",
+      stretch: "Not typically helpful for this.",
+      strengthen: "Not a self-care starting point. Persistent groin or lower-abdominal pain with cutting, kicking, or twisting sports that doesn't settle with rest is a commonly missed injury in these athletes, and needs assessment by a sports medicine specialist rather than general core exercises." } ]
   },
   "lower-back": { label: "Lower Back", causes: [
     { name: "Tight hip flexors + weak glutes (anterior pelvic tilt pattern)", likelihood: "Most common",
@@ -603,7 +642,11 @@ const DATA = {
     { name: "Sacroiliac (SI) joint irritation", likelihood: "Common",
       massage: "Muscles around the SI joint and glute on the affected side — usually felt just to one side of the very base of the spine.",
       stretch: "Knee-to-chest stretch and gentle figure-4 stretch on the affected side.",
-      strengthen: "Glute and deep core stability work (bridges, bird-dogs) — the SI joint relies on surrounding muscles for support, so this is often more effective than stretching alone. Pain that's clearly one-sided and worse with standing on one leg or rolling over in bed fits this pattern well." } ]
+      strengthen: "Glute and deep core stability work (bridges, bird-dogs) — the SI joint relies on surrounding muscles for support, so this is often more effective than stretching alone. Pain that's clearly one-sided and worse with standing on one leg or rolling over in bed fits this pattern well." },
+    { name: "Spondylolysis / pars stress fracture (relevant in young and extension-sport athletes)", likelihood: "Less common, seek care if worse with back-arching",
+      massage: "Not appropriate while suspected.",
+      stretch: "Avoid repeated back extension (arching backward) — the classic aggravating movement — until assessed.",
+      strengthen: "Not a self-care starting point. Worth specifically considering in adolescent and young athletes in extension-heavy sports (gymnastics, fast bowling, diving) with lower back pain that's clearly worse arching backward — this needs imaging, not generic stretching or strengthening." } ]
   },
   glutes: { label: "Glutes", causes: [
     { name: "Piriformis tightness (sciatic-type referral)", likelihood: "Most common",
@@ -617,7 +660,11 @@ const DATA = {
     { name: "Deep gluteal syndrome (sciatic nerve irritation beyond the piriformis)", likelihood: "Less common",
       massage: "Gentle glute release only — avoid aggressive, deep pressure if pain radiates down the leg, since that can aggravate an irritated nerve.",
       stretch: "Gentle figure-4 stretch and nerve glides (straighten the leg slowly while seated, easing off if it tingles).",
-      strengthen: "Glute strengthening once the acute irritation has settled. If pain radiates below the knee with numbness, tingling, or weakness, see a physio or doctor — this pattern often needs a different, more targeted approach than general glute tightness." } ]
+      strengthen: "Glute strengthening once the acute irritation has settled. If pain radiates below the knee with numbness, tingling, or weakness, see a physio or doctor — this pattern often needs a different, more targeted approach than general glute tightness." },
+    { name: "Ischial bursitis / \"weaver's bottom\" (common in cyclists and rowers)", likelihood: "Less common",
+      massage: "Light pressure directly at the sit-bone — avoid aggressive pressure, since this area is often already irritated.",
+      stretch: "Gentle seated figure-4 stretch or pigeon pose, as above.",
+      strengthen: "Gradually build tolerance to seated load (cycling or rowing volume) alongside general glute strengthening — this is a classic overuse injury from high training volumes on a saddle or rowing seat, distinct from typical glute tightness." } ]
   },
   hip: { label: "Hip", causes: [
     { name: "Glute medius weakness (hip drop pattern)", likelihood: "Most common",
@@ -631,7 +678,11 @@ const DATA = {
     { name: "Greater trochanteric pain syndrome (hip bursitis)", likelihood: "Common",
       massage: "Directly over the bony point on the outer hip — moderate, not deep pressure, since this area is often already irritated.",
       stretch: "Standing IT-band-style stretch, leaning away from the affected side.",
-      strengthen: "Glute medius strengthening (side-lying leg raises, banded lateral walks) — weak hip abductors are the main driver here. This pattern is classically worse lying on the affected side at night and with the first steps after resting." } ]
+      strengthen: "Glute medius strengthening (side-lying leg raises, banded lateral walks) — weak hip abductors are the main driver here. This pattern is classically worse lying on the affected side at night and with the first steps after resting." },
+    { name: "Femoroacetabular impingement (FAI) / labral tear (common in football, hockey, dance)", likelihood: "Less common",
+      massage: "General hip massage as above — won't resolve a joint or labral issue but can ease surrounding tension.",
+      stretch: "Avoid deep hip flexion or pivoting positions that reproduce a sharp pinching pain.",
+      strengthen: "General hip strengthening can help manage symptoms, but deep groin pain with pinching on deep squatting or pivoting — common in football, hockey, and dance — is worth a specialist assessment rather than assuming it's just tightness." } ]
   },
   hamstring: { label: "Hamstring", causes: [
     { name: "Hamstring tightness/overload from sprinting or sudden load increase", likelihood: "Most common",
@@ -645,7 +696,11 @@ const DATA = {
     { name: "Proximal hamstring tendinopathy (deep pain at the sit-bone)", likelihood: "Less common",
       massage: "Very light pressure directly at the sit-bone attachment only — this area is often quite irritable, so avoid aggressive pressure.",
       stretch: "Avoid aggressive stretching, which tends to aggravate this — brief, gentle holds only if any.",
-      strengthen: "This is the key treatment: slow, heavy resistance work (bridges progressing to single-leg, Romanian deadlifts), ideally guided by a physio since load and range need to be managed carefully. Suspect this over a muscle strain if pain is worse sitting on hard surfaces or after running, rather than during a single sudden movement." } ]
+      strengthen: "This is the key treatment: slow, heavy resistance work (bridges progressing to single-leg, Romanian deadlifts), ideally guided by a physio since load and range need to be managed carefully. Suspect this over a muscle strain if pain is worse sitting on hard surfaces or after running, rather than during a single sudden movement." },
+    { name: "Sciatic nerve tethering mimicking hamstring tightness (relevant in sprinters)", likelihood: "Less common",
+      massage: "Gentle only — avoid aggressive pressure if the tightness has a tingling or electric quality to it.",
+      stretch: "Nerve glides (gentle seated leg extension, easing off at the first sign of tingling) rather than aggressive static stretching.",
+      strengthen: "Same hamstring and glute strengthening as above. Worth considering in sprinters whose 'chronically tight hamstring' doesn't respond to normal stretching over weeks — a neural component needs a different approach than a purely muscular one, and a physio assessment can clarify which it is." } ]
   },
   quad: { label: "Quad / Front Thigh", causes: [
     { name: "Quad tightness from training load or running volume increase", likelihood: "Most common",
@@ -659,7 +714,11 @@ const DATA = {
     { name: "Rectus femoris strain (front-of-thigh, hip-crossing muscle)", likelihood: "Less common",
       massage: "Mid-thigh, front — avoid direct pressure on a recent acute strain.",
       stretch: "Gentle standing quad stretch only — avoid overstretching a recent strain.",
-      strengthen: "Gradual eccentric loading (slow lowering during leg extensions or squats) once acute pain has settled. This muscle crosses both the hip and knee, so it's a common strain in kicking sports — pinpoint tenderness higher up near the hip crease is a useful clue it's this rather than the general quad." } ]
+      strengthen: "Gradual eccentric loading (slow lowering during leg extensions or squats) once acute pain has settled. This muscle crosses both the hip and knee, so it's a common strain in kicking sports — pinpoint tenderness higher up near the hip crease is a useful clue it's this rather than the general quad." },
+    { name: "Myositis ossificans after a direct blow (common in contact sports)", likelihood: "Less common, avoid massage in first 48–72h",
+      massage: "Avoid massage entirely in the first 48–72 hours after a significant direct blow to the thigh — this is the opposite of what usually helps and can worsen this specific injury.",
+      stretch: "Avoid aggressive stretching in the acute phase after a significant impact.",
+      strengthen: "Gradual return once swelling and bruising settle, guided by a physio if a hard lump develops in the muscle. Common after a direct knock in rugby, football, and other contact sports — the key difference from ordinary quad tightness is a specific recent impact, not gradual overuse." } ]
   },
   "it-band": { label: "IT Band (Outer Thigh)", causes: [
     { name: "IT band syndrome from weak hip abductors (common in runners)", likelihood: "Most common",
@@ -673,7 +732,11 @@ const DATA = {
     { name: "Meralgia paresthetica (nerve irritation, not muscular)", likelihood: "Less common",
       massage: "Not usually helpful — this is a nerve issue rather than a muscle one, so massage rarely changes it.",
       stretch: "No specific stretch helps; avoid tight waistbands, belts, or skinny jeans that compress the nerve at the front of the hip.",
-      strengthen: "Not applicable. The distinguishing sign is burning, tingling, or numbness on the outer thigh rather than a typical ache or tightness — if that's what you're feeling, self-care for muscle tightness won't address the root cause, and it's worth mentioning to a doctor if it persists." } ]
+      strengthen: "Not applicable. The distinguishing sign is burning, tingling, or numbness on the outer thigh rather than a typical ache or tightness — if that's what you're feeling, self-care for muscle tightness won't address the root cause, and it's worth mentioning to a doctor if it persists." },
+    { name: "Snapping hip syndrome, lateral type (common in dancers and runners)", likelihood: "Less common",
+      massage: "General glute and TFL release as above.",
+      stretch: "Standing IT band stretch as above.",
+      strengthen: "Hip abductor strengthening as above. The distinguishing feature is an audible or palpable snap or click over the outer hip with movement — usually benign, but worth mentioning to a physio if it becomes painful rather than just noisy." } ]
   },
   knee: { label: "Knee", causes: [
     { name: "Quad/VMO weakness or imbalance", likelihood: "Most common",
@@ -687,7 +750,11 @@ const DATA = {
     { name: "Patellofemoral pain syndrome (\"runner's knee\")", likelihood: "Very common",
       massage: "Quads and IT band as above, plus gentle pressure just around the edges of the kneecap.",
       stretch: "Standing quad stretch, within a comfortable range.",
-      strengthen: "Quad and hip strengthening (step-downs, wall sits), progressed gradually — this is classically pain around or behind the kneecap that's worse on stairs, squatting, or after prolonged sitting, rather than a deep joint-line ache." } ]
+      strengthen: "Quad and hip strengthening (step-downs, wall sits), progressed gradually — this is classically pain around or behind the kneecap that's worse on stairs, squatting, or after prolonged sitting, rather than a deep joint-line ache." },
+    { name: "Patellar tendinopathy / jumper's knee (common in volleyball and basketball)", likelihood: "Less common",
+      massage: "Light pressure directly at the bottom of the kneecap, along the tendon.",
+      stretch: "Gentle standing quad stretch, within a comfortable range.",
+      strengthen: "Slow, heavy resistance work (e.g. Spanish squats), progressed gradually. Distinguished from patellofemoral pain by pinpoint tenderness right at the bottom of the kneecap, rather than a general ache around it — classic in jumping-heavy sports." } ]
   },
   calf: { label: "Calf / Shin", causes: [
     { name: "Calf tightness from training load increase", likelihood: "Most common",
@@ -701,7 +768,11 @@ const DATA = {
     { name: "Achilles tendinopathy (pain at the back of the heel/lower calf)", likelihood: "Common",
       massage: "Light pressure along the Achilles tendon itself — avoid aggressive pressure directly on it if acutely painful.",
       stretch: "Gentle wall calf stretch, both straight- and bent-knee versions, within a comfortable range.",
-      strengthen: "Heel raises with a slow, controlled lowering phase — this is the single most evidence-supported treatment for this condition. Classic pattern: stiffness and pain first thing in the morning or after rest, easing slightly with gentle movement. If the tendon feels like it's given way, or there's a sudden gap or pop, seek urgent care rather than self-treating — that can indicate a rupture." } ]
+      strengthen: "Heel raises with a slow, controlled lowering phase — this is the single most evidence-supported treatment for this condition. Classic pattern: stiffness and pain first thing in the morning or after rest, easing slightly with gentle movement. If the tendon feels like it's given way, or there's a sudden gap or pop, seek urgent care rather than self-treating — that can indicate a rupture." },
+    { name: "Exertional compartment syndrome (common in runners and cyclists)", likelihood: "Less common",
+      massage: "Not typically helpful for this.",
+      stretch: "Not typically helpful for this.",
+      strengthen: "Not a self-care starting point. The distinguishing pattern is a tight, bursting pain that comes on predictably at a certain point during running or cycling and eases within minutes of stopping — if that matches, it needs a sports medicine referral (sometimes pressure testing) rather than ongoing self-massage or stretching." } ]
   },
   "ankle-foot": { label: "Ankle / Foot", causes: [
     { name: "Plantar fasciitis (weak intrinsic foot muscles + tight calf)", likelihood: "Most common",
@@ -715,7 +786,11 @@ const DATA = {
     { name: "Metatarsal stress fracture", likelihood: "Less common, seek care if bony and worsening with activity",
       massage: "Not appropriate — this is a bone injury, not a soft-tissue one, and pressing on it won't help and may hurt.",
       stretch: "Not appropriate while suspected — continuing to load a stress fracture can progress it to a full fracture.",
-      strengthen: "Not a strengthening issue right now. Suspect this over plantar fasciitis or a sprain if pain is pinpoint on a specific bone in the forefoot, came on gradually with a sudden increase in running or walking volume, worsens with impact, and doesn't ease with rest the way muscular pain usually does — see a doctor for imaging rather than self-treating." } ]
+      strengthen: "Not a strengthening issue right now. Suspect this over plantar fasciitis or a sprain if pain is pinpoint on a specific bone in the forefoot, came on gradually with a sudden increase in running or walking volume, worsens with impact, and doesn't ease with rest the way muscular pain usually does — see a doctor for imaging rather than self-treating." },
+    { name: "Peroneal tendinopathy (common after recurrent ankle sprains in cutting sports)", likelihood: "Less common",
+      massage: "Light pressure along the outer ankle and lower leg, behind the ankle bone.",
+      stretch: "Gentle ankle circles and calf stretch, as above.",
+      strengthen: "Resisted ankle eversion (band), progressed gradually. Worth considering over general ankle weakness if pain sits specifically behind the outer ankle bone, especially after a history of repeated ankle sprains in cutting-sport athletes." } ]
   }
 };
 
