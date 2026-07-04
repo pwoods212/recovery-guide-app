@@ -311,6 +311,31 @@
   .app-footer a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
   .app-footer a:hover { color: var(--accent); }
   .app-footer span { margin: 0 8px; }
+
+  .watch-demo-btn {
+    display: inline-flex; align-items: center; gap: 6px; margin-top: 10px;
+    background: var(--pine); color: #fbfbf7; border: none; border-radius: 8px;
+    padding: 7px 14px; font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; cursor: pointer;
+  }
+  .watch-demo-btn:hover { opacity: 0.9; }
+
+  .media-modal-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(15,18,14,0.75);
+    z-index: 100; align-items: center; justify-content: center; padding: 20px;
+  }
+  .media-modal-overlay.visible { display: flex; }
+  .media-modal-box {
+    position: relative; background: var(--surface-raised); border-radius: 14px;
+    padding: 16px; max-width: 520px; width: 100%; box-shadow: var(--shadow);
+  }
+  .media-modal-close {
+    position: absolute; top: -14px; right: -14px; width: 32px; height: 32px;
+    border-radius: 50%; background: var(--pine); color: #fbfbf7; border: 2px solid var(--surface-raised);
+    font-size: 0.9rem; cursor: pointer;
+  }
+  .media-modal-content img, .media-modal-content video {
+    display: block; width: 100%; height: auto; border-radius: 10px;
+  }
 </style>
 </head>
 <body>
@@ -369,6 +394,13 @@
       <span aria-hidden="true">·</span>
       <a href="disclaimer.html">Terms &amp; Medical Disclaimer</a>
     </footer>
+  </div>
+</div>
+
+<div id="mediaModalOverlay" class="media-modal-overlay">
+  <div class="media-modal-box">
+    <button type="button" class="media-modal-close" aria-label="Close">✕</button>
+    <div id="mediaModalContent" class="media-modal-content"></div>
   </div>
 </div>
 
@@ -488,6 +520,41 @@ const STRETCH_DURATION = {
   "knee__3": "gentle hold",
   "ankle-foot__3": "10 each way",
 };
+
+/* ---------- Stretch demonstration media (photo/video) ----------
+   Empty by default — add an entry here to make a "Watch demo" button
+   appear on that specific cause's Stretch step. Nothing shows until
+   you add a line, so there's no broken/placeholder UI in the meantime.
+
+   Format:
+     "regionKey__causeIndex": { type: "video", src: "media/file.mp4" }
+     "regionKey__causeIndex": { type: "image", src: "media/file.jpg" }
+
+   Many causes share the exact same stretch (e.g. every "Figure-4 stretch"
+   entry) — point them at the same file rather than re-shooting it.
+   See /media/README.md for file-naming and shooting guidance.
+
+   Example (uncomment and edit once you have real files):
+   "hip__0": { type: "video", src: "media/figure-4-stretch.mp4" },
+*/
+const STRETCH_MEDIA = {
+};
+
+function openMediaModal(causeId) {
+  const media = STRETCH_MEDIA[causeId];
+  if (!media) return;
+  const overlay = document.getElementById('mediaModalOverlay');
+  const content = document.getElementById('mediaModalContent');
+  content.innerHTML = media.type === 'video'
+    ? `<video src="${media.src}" controls autoplay muted playsinline loop></video>`
+    : `<img src="${media.src}" alt="Stretch demonstration">`;
+  overlay.classList.add('visible');
+}
+function closeMediaModal() {
+  const overlay = document.getElementById('mediaModalOverlay');
+  overlay.classList.remove('visible');
+  document.getElementById('mediaModalContent').innerHTML = '';
+}
 
 /* ---------- Cause data ---------- */
 const DATA = {
@@ -896,6 +963,17 @@ Object.entries(DATA).forEach(([key, area]) => {
   grid.appendChild(btn);
 });
 
+causesList.addEventListener('click', (e) => {
+  const btn = e.target.closest('.watch-demo-btn');
+  if (btn) openMediaModal(btn.dataset.causeId);
+});
+document.getElementById('mediaModalOverlay').addEventListener('click', (e) => {
+  if (e.target.id === 'mediaModalOverlay' || e.target.closest('.media-modal-close')) closeMediaModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeMediaModal();
+});
+
 document.getElementById('clearBtn').addEventListener('click', () => {
   selectedKeys.clear();
   refreshSelectionUI();
@@ -979,6 +1057,7 @@ function renderResults(highlightId) {
     area.causes.forEach((cause, idx) => {
       const causeId = `${key}__${idx}`;
       const duration = STRETCH_DURATION[causeId];
+      const hasMedia = Boolean(STRETCH_MEDIA[causeId]);
 
       const card = document.createElement('div');
       card.className = 'cause-card';
@@ -996,6 +1075,7 @@ function renderResults(highlightId) {
           <div class="step-head"><span class="step-num">2</span><span class="step-label">Stretch</span></div>
           <p>${cause.stretch}</p>
           ${duration ? `<span class="caption-badge">${duration}</span>` : ''}
+          ${hasMedia ? `<button type="button" class="watch-demo-btn" data-cause-id="${causeId}">▶ Watch demo</button>` : ''}
         </div>
 
         <div class="step-block">
