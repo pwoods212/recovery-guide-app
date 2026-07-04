@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Self-Care Works — Recovery Guide</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2f4a3d">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #edefea; --surface-raised: #ffffff; --text: #1b211d; --muted: #5c665f;
+    --border: #dce0d6; --accent: #c1622e; --accent-soft: #f1e1d3;
+    --pine: #2f4a3d; --pine-tint: #e2e9e1;
+    --warn-bg: #f7ecd3; --warn-border: #d9bb74; --warn-text: #7a5a12;
+    --shadow: 0 1px 2px rgba(27,33,29,0.04), 0 8px 24px rgba(27,33,29,0.06);
+    --font-display: 'Fraunces', ui-serif, Georgia, serif;
+    --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14180f; --surface-raised: #212821; --text: #ecefea; --muted: #9bab9c;
+      --border: #2c342c; --accent: #e08a4f; --accent-soft: #3a2a1e;
+      --pine: #8fc3a4; --pine-tint: #1f2b23;
+      --warn-bg: #2e2716; --warn-border: #6b5522; --warn-text: #e0b84f;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14180f; --surface-raised: #212821; --text: #ecefea; --muted: #9bab9c;
+    --border: #2c342c; --accent: #e08a4f; --accent-soft: #3a2a1e;
+    --pine: #8fc3a4; --pine-tint: #1f2b23; --warn-bg: #2e2716; --warn-border: #6b5522; --warn-text: #e0b84f;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+  }
+  :root[data-theme="light"] {
+    --bg: #edefea; --surface-raised: #ffffff; --text: #1b211d; --muted: #5c665f;
+    --border: #dce0d6; --accent: #c1622e; --accent-soft: #f1e1d3;
+    --pine: #2f4a3d; --pine-tint: #e2e9e1; --warn-bg: #f7ecd3; --warn-border: #d9bb74; --warn-text: #7a5a12;
+    --shadow: 0 1px 2px rgba(27,33,29,0.04), 0 8px 24px rgba(27,33,29,0.06);
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .hero-band { background: var(--pine); padding: 30px 20px 26px; }
+  .hero-inner { max-width: 640px; margin: 0 auto; }
+  .back-link {
+    display: inline-block; color: rgba(251,251,247,0.85); font-family: var(--font-mono);
+    font-size: 0.78rem; text-decoration: none; margin-bottom: 14px;
+  }
+  .back-link:hover { color: #fbfbf7; }
+  .hero-inner h1 {
+    font-family: var(--font-display); font-weight: 600; font-size: 1.7rem; color: #fbfbf7; margin: 0; text-wrap: balance;
+  }
+
+  .wrap { max-width: 640px; margin: 0 auto; padding: 32px 20px 90px; }
+
+  .lede { font-size: 1.05rem; color: var(--text); margin: 0 0 30px; max-width: 62ch; }
+
+  section { margin-bottom: 40px; }
+  section h2 {
+    font-family: var(--font-display); font-weight: 600; font-size: 1.4rem; margin: 0 0 6px; text-wrap: balance;
+  }
+  section .section-sub { color: var(--muted); font-size: 0.9rem; margin: 0 0 18px; }
+
+  .card {
+    background: var(--surface-raised); border: 1px solid var(--border); border-radius: 12px;
+    padding: 20px 22px; margin-bottom: 14px; box-shadow: var(--shadow);
+  }
+  .card h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; margin: 0 0 8px; }
+  .card p { margin: 0; font-size: 0.94rem; }
+  .card p + p { margin-top: 10px; }
+
+  .callout {
+    background: var(--warn-bg); border: 1px solid var(--warn-border); border-radius: 12px;
+    padding: 18px 20px; margin-bottom: 16px;
+  }
+  .callout strong { color: var(--warn-text); }
+  .callout p { margin: 6px 0 0; font-size: 0.93rem; }
+
+  .step-strip {
+    display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap;
+  }
+  .step-chip {
+    flex: 1; min-width: 140px; background: var(--pine-tint); border-radius: 10px;
+    padding: 14px 16px; text-align: center;
+  }
+  .step-chip .num {
+    font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; color: var(--pine);
+    text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 4px;
+  }
+  .step-chip .what { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; color: var(--pine); }
+
+  .equip-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px;
+  }
+  .equip-item {
+    background: var(--surface-raised); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start;
+  }
+  .equip-item .dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-top: 6px; flex-shrink: 0;
+  }
+  .equip-item .name { font-weight: 600; font-size: 0.92rem; }
+  .equip-item .used-for { display: block; color: var(--muted); font-size: 0.8rem; margin-top: 2px; }
+
+  .tier-label {
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--muted); margin: 22px 0 10px;
+  }
+  .tier-label:first-of-type { margin-top: 0; }
+
+  .cta-back {
+    display: inline-block; margin-top: 10px; background: var(--pine); color: #fbfbf7;
+    text-decoration: none; border-radius: 10px; padding: 13px 22px; font-weight: 600; font-size: 0.95rem;
+  }
+  .cta-back:hover { opacity: 0.9; }
+</style>
+</head>
+<body>
+<header class="hero-band">
+  <div class="hero-inner">
+    <a class="back-link" href="index.html">← Back to Recovery Guide</a>
+    <h1>How self-care actually works</h1>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="lede">A quick, honest explainer on why massage, stretching, and strengthening are sequenced the way they are in this app, why pushing to your own limit (not someone else's) matters, and exactly what you need on hand to follow along.</p>
+
+  <section>
+    <h2>Why the order is massage → stretch → strengthen</h2>
+    <p class="section-sub">Each step does a different job. Skipping ahead to strengthening on a tissue that's still guarded and tight tends to feel worse, not better.</p>
+
+    <div class="step-strip">
+      <div class="step-chip"><span class="num">Step 1</span><span class="what">Release</span></div>
+      <div class="step-chip"><span class="num">Step 2</span><span class="what">Lengthen</span></div>
+      <div class="step-chip"><span class="num">Step 3</span><span class="what">Build</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Massage — calming the guarding response</h3>
+      <p>When a muscle is overworked or irritated, the nervous system often keeps it in a low-grade protective contraction — that's most of what you feel as a "knot." Massage doesn't dissolve anything; its main effect is short-term: it increases local blood flow and reduces that protective tone, which is why an area often feels looser immediately afterward.</p>
+    </div>
+    <div class="card">
+      <h3>Stretch — teaching the tissue to tolerate length again</h3>
+      <p>Regular stretching mostly works by increasing your tolerance to the sensation of lengthening, not by permanently "elongating" the muscle. Repeated, comfortable exposure to a stretch position retrains the nervous system to allow more range before it protectively resists — that's why consistency over days and weeks matters more than one intense session.</p>
+    </div>
+    <div class="card">
+      <h3>Strengthen — building the capacity that prevents it recurring</h3>
+      <p>This is the step that actually changes the outcome long-term. Most recurring muscular pain comes from a tissue or joint being asked to do more than it's currently prepared for — weak glutes under-supporting the lower back, for example. Strengthening gradually raises what that area can handle, which is the only one of the three steps that builds lasting resilience rather than temporary relief.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Work at your limit — not someone else's</h2>
+    <p class="section-sub">This is the part that most determines whether self-care helps or backfires.</p>
+
+    <div class="callout">
+      <strong>"No pain, no gain" is the wrong model here.</strong>
+      <p>For stretching, aim for a mild-to-moderate pulling sensation — roughly a 4–6 out of 10 — never a sharp, shooting, or worsening pain. For strengthening, working a muscle to fatigue is normal and expected; working through joint pain or sharp pain is not. If something feels sharp, or gets worse the more you do it, stop and treat that as information, not weakness.</p>
+    </div>
+
+    <div class="card">
+      <h3>Your limit isn't fixed — and it isn't anyone else's</h3>
+      <p>Age, past injuries, existing conditions (like osteoporosis, hypermobility, or joint replacements), medication, and current fitness level all change what's appropriate on any given day. A stretch or exercise that's easy for one person can be entirely wrong for another with the same-sounding pain. That's exactly why this app screens for red-flag symptoms before offering any advice, and why it keeps saying to see a professional for anything outside mild, ordinary muscular discomfort — it has no way to know your individual history.</p>
+    </div>
+    <div class="card">
+      <h3>Progress gradually, on purpose</h3>
+      <p>Tissue adapts to load over roughly 2–6 weeks of consistent, repeated exposure — not a single session. Increase duration, resistance, or difficulty in small steps rather than jumping straight to the hardest version. Overloading too fast is one of the most common ways people turn manageable tightness into a real injury.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>What you'll actually need</h2>
+    <p class="section-sub">Almost everything in this app can be done with things you already have. A short list of low-cost extras makes a few exercises easier, but none of them are required to get started.</p>
+
+    <p class="tier-label">Already have it</p>
+    <div class="equip-grid">
+      <div class="equip-item"><span class="dot"></span><div><span class="name">A wall or doorway</span><span class="used-for">Pec stretch, calf stretch, suboccipital release</span></div></div>
+      <div class="equip-item"><span class="dot"></span><div><span class="name">Floor space + a mat or towel</span><span class="used-for">Cat-cow, child's pose, dead bugs, planks, figure-4 stretch</span></div></div>
+      <div class="equip-item"><span class="dot"></span><div><span class="name">A sturdy chair</span><span class="used-for">Seated stretches, balance support for single-leg exercises</span></div></div>
+      <div class="equip-item"><span class="dot"></span><div><span class="name">A phone timer</span><span class="used-for">Timing holds (10–45s) and sets accurately</span></div></div>
+      <div class="equip-item"><span class="dot"></span><div><span class="name">A hand towel</span><span class="used-for">Towel scrunches for foot/arch strengthening</span></div></div>
+    </div>
+
+    <p class="tier-label">Worth buying — all inexpensive</p>
+    <div class="equip-grid">
+      <div class="equip-item"><span class="dot"></span><div><span class="name">Foam roller</span><span class="used-for">Chest, upper back, quads, calves</span></div></div>
+      <div class="equip-item"><span class="dot"></span><div><span class="name">Massage ball or lacrosse ball</span><span class="used-for">Glutes, piriformis, shoulder blade, plantar fascia</span></div></div>
+      <div class="equip-item"><span class="dot"></span><div><span class="name">Resistance band (light)</span><span class="used-for">Rotator cuff, scapular retraction, ankle and hip strengthening</span></div></div>
+      <div class="equip-item"><span class="dot"></span><div><span class="name">A light dumbbell (1–3kg)</span><span class="used-for">Eccentric wrist exercises for tennis/golfer's elbow</span></div></div>
+    </div>
+
+    <p class="tier-label">Optional nice-to-have</p>
+    <div class="equip-grid">
+      <div class="equip-item"><span class="dot"></span><div><span class="name">Frozen water bottle</span><span class="used-for">Rolling the sole of the foot for plantar fasciitis</span></div></div>
+    </div>
+  </section>
+
+  <a class="cta-back" href="index.html">Back to the recovery tool →</a>
+</div>
+</body>
+</html>
