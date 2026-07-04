@@ -1,0 +1,15 @@
+{
+  "name": "Recovery Guide",
+  "short_name": "Recovery Guide",
+  "description": "Pick where it hurts — get the likely cause, plus exactly what to massage, stretch, and strengthen.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#edefea",
+  "theme_color": "#2f4a3d",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

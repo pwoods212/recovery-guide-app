@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recovery Guide — Understand Your Pain</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2f4a3d">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Recovery Guide">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #edefea;
+    --surface: #fbfbf7;
+    --surface-raised: #ffffff;
+    --text: #1b211d;
+    --muted: #5c665f;
+    --border: #dce0d6;
+    --accent: #c1622e;
+    --accent-soft: #f1e1d3;
+    --pine: #2f4a3d;
+    --pine-tint: #e2e9e1;
+    --warn-bg: #f7ecd3;
+    --warn-border: #d9bb74;
+    --warn-text: #7a5a12;
+    --shadow: 0 1px 2px rgba(27,33,29,0.04), 0 8px 24px rgba(27,33,29,0.06);
+
+    --font-display: 'Fraunces', ui-serif, Georgia, serif;
+    --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14180f;
+      --surface: #1c221d;
+      --surface-raised: #212821;
+      --text: #ecefea;
+      --muted: #9bab9c;
+      --border: #2c342c;
+      --accent: #e08a4f;
+      --accent-soft: #3a2a1e;
+      --pine: #8fc3a4;
+      --pine-tint: #1f2b23;
+      --warn-bg: #2e2716;
+      --warn-border: #6b5522;
+      --warn-text: #e0b84f;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14180f; --surface: #1c221d; --surface-raised: #212821; --text: #ecefea;
+    --muted: #9bab9c; --border: #2c342c; --accent: #e08a4f; --accent-soft: #3a2a1e;
+    --pine: #8fc3a4; --pine-tint: #1f2b23; --warn-bg: #2e2716; --warn-border: #6b5522; --warn-text: #e0b84f;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+  }
+  :root[data-theme="light"] {
+    --bg: #edefea; --surface: #fbfbf7; --surface-raised: #ffffff; --text: #1b211d;
+    --muted: #5c665f; --border: #dce0d6; --accent: #c1622e; --accent-soft: #f1e1d3;
+    --pine: #2f4a3d; --pine-tint: #e2e9e1; --warn-bg: #f7ecd3; --warn-border: #d9bb74; --warn-text: #7a5a12;
+    --shadow: 0 1px 2px rgba(27,33,29,0.04), 0 8px 24px rgba(27,33,29,0.06);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+  }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .hero-band { background: var(--pine); padding: 34px 20px 30px; }
+  .hero-inner { max-width: 640px; margin: 0 auto; }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.72);
+    margin: 0 0 10px;
+  }
+  .hero-inner h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 2rem;
+    color: #fbfbf7;
+    margin: 0 0 8px;
+    text-wrap: balance;
+  }
+  .hero-inner .hero-sub {
+    color: rgba(251,251,247,0.82);
+    margin: 0;
+    font-size: 0.98rem;
+    max-width: 46ch;
+  }
+
+  .wrap { max-width: 640px; margin: 0 auto; padding: 28px 20px 80px; }
+
+  .disclaimer {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    border-radius: 10px;
+    padding: 13px 16px;
+    font-size: 0.85rem;
+    color: var(--text);
+    margin-bottom: 26px;
+  }
+  .disclaimer strong { color: var(--warn-text); }
+
+  .search-section { margin-bottom: 22px; position: relative; }
+  .search-section label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .search-input-wrap {
+    position: relative;
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+  }
+  .search-input-wrap svg {
+    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    width: 16px; height: 16px; color: var(--muted);
+  }
+  #muscleSearch {
+    width: 100%; padding: 13px 14px 13px 40px; font-size: 0.95rem;
+    font-family: var(--font-body); border: none; background: transparent;
+    color: var(--text); border-radius: 10px;
+  }
+  #muscleSearch:focus { outline: none; }
+  .search-input-wrap:focus-within { border-color: var(--accent); }
+  .search-results {
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--surface-raised); border: 1px solid var(--border);
+    border-radius: 10px; margin-top: 6px; max-height: 260px;
+    overflow-y: auto; z-index: 20; display: none; box-shadow: var(--shadow);
+  }
+  .search-results.visible { display: block; }
+  .search-result-item {
+    display: block; width: 100%; text-align: left; background: none; border: none;
+    border-bottom: 1px solid var(--border); padding: 11px 14px; font-size: 0.9rem;
+    font-family: var(--font-body); color: var(--text); cursor: pointer;
+  }
+  .search-result-item:last-child { border-bottom: none; }
+  .search-result-item:hover { background: var(--pine-tint); }
+  .search-result-item .sr-region {
+    color: var(--muted); font-family: var(--font-mono); font-size: 0.72rem;
+    text-transform: uppercase; letter-spacing: 0.03em;
+  }
+  .search-no-match { padding: 12px 14px; font-size: 0.85rem; color: var(--muted); }
+
+  .divider-or {
+    display: flex; align-items: center; gap: 12px; color: var(--muted);
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em;
+    text-transform: uppercase; margin: 6px 0 22px;
+  }
+  .divider-or::before, .divider-or::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+
+  .figure-section {
+    background: var(--surface-raised); border: 1px solid var(--border);
+    border-radius: 18px; box-shadow: var(--shadow); padding: 22px 20px 18px; margin-bottom: 22px;
+  }
+  .view-toggle {
+    display: flex; background: var(--bg); border-radius: 999px; padding: 4px;
+    gap: 4px; margin: 0 auto 16px; max-width: 220px;
+  }
+  .view-toggle button {
+    flex: 1; background: transparent; border: none; color: var(--muted);
+    border-radius: 999px; padding: 8px 10px; font-family: var(--font-body);
+    font-weight: 600; font-size: 0.85rem; cursor: pointer;
+  }
+  .view-toggle button.active { background: var(--pine); color: #fbfbf7; }
+  .figure-wrap {
+    position: relative; width: 100%; max-width: 220px; margin: 0 auto 6px; aspect-ratio: 1 / 2.05;
+  }
+  .figure-wrap::before {
+    content: ""; position: absolute; inset: -8%;
+    background: radial-gradient(circle, var(--pine-tint) 0%, transparent 68%); z-index: 0;
+  }
+  .figure-wrap svg.figure-view { width: 100%; height: 100%; display: block; position: relative; z-index: 1; }
+  .figure-view { display: none; }
+  .figure-view.active { display: block; }
+  div.figure-view { position: absolute; inset: 0; z-index: 2; }
+  .hotspot {
+    position: absolute; width: 20px; height: 20px; border-radius: 50%;
+    background: var(--accent-soft); border: 2px solid var(--accent); opacity: 0.55;
+    cursor: pointer; transform: translate(-50%, -50%); padding: 0; transition: transform .15s;
+  }
+  .hotspot:hover { opacity: 0.9; transform: translate(-50%, -50%) scale(1.1); }
+  .hotspot.active { background: var(--accent); opacity: 1; box-shadow: 0 0 0 4px var(--accent-soft); }
+  .figure-hint { text-align: center; color: var(--muted); font-size: 0.82rem; margin: 10px 0 0; }
+
+  .grid-label {
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--muted); margin: 4px 0 12px;
+  }
+  .clear-btn {
+    background: transparent; border: 1px solid var(--border); color: var(--muted);
+    border-radius: 999px; padding: 5px 12px; font-family: var(--font-mono);
+    font-size: 0.7rem; letter-spacing: 0.03em; cursor: pointer;
+  }
+  .clear-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  .grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; }
+  .area-btn {
+    background: var(--surface-raised); border: 1px solid var(--border); border-radius: 999px;
+    padding: 9px 16px; font-family: var(--font-body); font-size: 0.85rem; color: var(--text);
+    cursor: pointer; transition: border-color .15s, background .15s;
+  }
+  .area-btn:hover { border-color: var(--accent); }
+  .area-btn.active { border-color: var(--accent); background: var(--accent); color: #fff; font-weight: 600; }
+
+  #results { display: none; }
+  #results.visible { display: block; }
+
+  .section-title {
+    font-family: var(--font-display); font-weight: 600; font-size: 1.35rem;
+    margin: 0 0 18px; text-wrap: balance;
+  }
+  .region-heading {
+    font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--pine); margin: 26px 0 10px;
+    padding-bottom: 6px; border-bottom: 1px solid var(--border);
+  }
+  .region-heading:first-of-type { margin-top: 0; }
+
+  .cause-card {
+    background: var(--surface-raised); border: 1px solid var(--border); border-radius: 12px;
+    padding: 20px 22px; margin-bottom: 18px; box-shadow: var(--shadow);
+    transition: box-shadow .3s, border-color .3s;
+  }
+  .cause-card.highlight { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .cause-card .cause-name {
+    font-family: var(--font-display); font-weight: 600; font-size: 1.12rem;
+    margin: 0 0 12px; text-wrap: balance;
+  }
+  .likelihood-pill {
+    display: inline-block; font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.04em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px;
+  }
+  .tone-primary { background: var(--pine-tint); color: var(--pine); }
+  .tone-neutral { background: var(--accent-soft); color: var(--accent); }
+  .tone-caution { background: var(--warn-bg); color: var(--warn-text); border: 1px solid var(--warn-border); }
+
+  .step-block { padding: 16px 0; border-top: 1px solid var(--border); }
+  .step-block:first-of-type { border-top: none; padding-top: 4px; }
+  .step-head {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+  }
+  .step-num {
+    width: 20px; height: 20px; border-radius: 50%; background: var(--pine); color: #fbfbf7;
+    font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .step-label {
+    font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .step-block p { margin: 0 0 10px; font-size: 0.93rem; color: var(--text); }
+
+  .illustrated-row { display: flex; align-items: center; gap: 14px; }
+  .mini-figure-box, .pose-box {
+    flex-shrink: 0; background: var(--pine-tint); border-radius: 10px; padding: 6px;
+  }
+  .mini-figure-box { width: 56px; height: 100px; }
+  .mini-figure-box svg { width: 100%; height: 100%; }
+  .pose-box { width: 128px; height: 100px; }
+  .pose-box svg { width: 100%; height: 100%; }
+  .illustrated-row p { flex: 1; margin: 0; }
+  .caption-badge {
+    display: inline-block; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600;
+    color: var(--accent); background: var(--accent-soft); border-radius: 6px;
+    padding: 2px 7px; margin-top: 6px;
+  }
+
+  .empty-state { color: var(--muted); font-size: 0.9rem; }
+
+  #app { display: none; }
+  #app.visible { display: block; }
+  #gate-screen { display: block; }
+  #gate-screen.hidden { display: none; }
+
+  .gate-card {
+    background: var(--surface-raised); border: 1px solid var(--border); border-radius: 14px;
+    box-shadow: var(--shadow); padding: 26px 26px 24px; margin-bottom: 20px;
+  }
+  .gate-card h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.3rem; margin: 0 0 8px; }
+  .gate-card p.sub { color: var(--muted); margin: 0 0 18px; font-size: 0.9rem; }
+
+  .flag-item {
+    display: flex; align-items: flex-start; gap: 12px; padding: 11px 0;
+    border-top: 1px solid var(--border); font-size: 0.92rem;
+  }
+  .flag-item:first-of-type { border-top: none; }
+  .flag-item input[type="checkbox"] {
+    margin-top: 3px; width: 19px; height: 19px; flex-shrink: 0; accent-color: var(--pine);
+  }
+  .flag-item label { cursor: pointer; }
+
+  .gate-continue {
+    margin-top: 20px; width: 100%; background: var(--pine); color: #fbfbf7; border: none;
+    border-radius: 10px; padding: 13px 16px; font-family: var(--font-body); font-size: 0.95rem;
+    font-weight: 600; cursor: pointer;
+  }
+  .gate-continue:hover { opacity: 0.9; }
+  .gate-na-btn {
+    margin-top: 10px; width: 100%; background: transparent; color: var(--muted);
+    border: 1px solid var(--border); border-radius: 10px; padding: 11px 16px;
+    font-family: var(--font-body); font-size: 0.88rem; cursor: pointer;
+  }
+  .gate-na-btn:hover { border-color: var(--pine); color: var(--pine); }
+
+  .stop-screen {
+    background: var(--warn-bg); border: 1px solid var(--warn-border); border-radius: 14px; padding: 24px 26px;
+  }
+  .stop-screen h2 { font-family: var(--font-display); font-weight: 600; color: var(--warn-text); margin: 0 0 12px; font-size: 1.25rem; }
+  .stop-screen p { margin: 8px 0; font-size: 0.93rem; }
+  .stop-screen .back-btn {
+    margin-top: 16px; background: transparent; border: 1px solid var(--warn-border); color: var(--text);
+    border-radius: 10px; padding: 10px 16px; font-family: var(--font-body); font-size: 0.88rem; cursor: pointer;
+  }
+
+  @media (max-width: 380px) {
+    .illustrated-row { flex-direction: column; align-items: flex-start; }
+    .pose-box { width: 100%; height: 90px; }
+  }
+</style>
+</head>
+<body>
+<header class="hero-band">
+  <div class="hero-inner">
+    <p class="eyebrow">Self-care, without the guesswork</p>
+    <h1>Recovery Guide</h1>
+    <p class="hero-sub">Pick where it hurts — get the likely cause, plus exactly what to massage, stretch, and strengthen.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div id="gate-screen">
+    <div class="gate-card" id="gateQuestions">
+      <h2>Quick safety check</h2>
+      <p class="sub">Before we get into self-care advice, check any of these that apply to you right now. If none apply, just continue.</p>
+      <div id="flagList"></div>
+      <button class="gate-continue" id="gateContinueBtn">Continue</button>
+      <button class="gate-na-btn" id="gateNABtn" type="button">N/A — none of these apply to me</button>
+    </div>
+    <div class="stop-screen" id="stopScreen" style="display:none;">
+      <h2>See a doctor before self-treating</h2>
+      <p>Based on what you selected, this isn't something to self-treat with massage or stretching. These symptoms can indicate something that needs professional assessment, sometimes urgently.</p>
+      <p>Please contact a doctor, urgent care, or emergency services (if symptoms are severe or sudden) before trying any self-care advice.</p>
+      <button class="back-btn" id="backBtn">Go back and re-check</button>
+    </div>
+  </div>
+
+  <div id="app">
+    <div class="disclaimer">
+      <strong>Not a diagnosis.</strong> This tool gives general, educational information based on common patterns — it does not know your medical history. See a physiotherapist or doctor for pain that's severe, sudden, worsening, or lasts more than a couple of weeks.
+    </div>
+
+    <div class="search-section">
+      <label for="muscleSearch">Already know what it might be? Type the muscle or tendon:</label>
+      <div class="search-input-wrap">
+        <svg viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="1.6"/><line x1="14" y1="14" x2="18" y2="18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <input type="text" id="muscleSearch" placeholder="e.g. IT band, rotator cuff, plantar fascia..." autocomplete="off">
+      </div>
+      <div id="searchResults" class="search-results"></div>
+    </div>
+
+    <div class="divider-or">or browse by body area</div>
+
+    <div class="figure-section">
+      <div class="view-toggle">
+        <button id="frontViewBtn" class="active" type="button">Front</button>
+        <button id="backViewBtn" type="button">Back</button>
+      </div>
+      <div class="figure-wrap">
+        <svg id="frontFigure" class="figure-view active" viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg"></svg>
+        <svg id="backFigure" class="figure-view" viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg"></svg>
+        <div id="frontHotspots" class="figure-view active"></div>
+        <div id="backHotspots" class="figure-view"></div>
+      </div>
+      <p class="figure-hint">Tap the figure — or use the list below. Select as many areas as apply.</p>
+    </div>
+
+    <div class="grid-label">All areas <button class="clear-btn" id="clearBtn" type="button">Clear selection</button></div>
+    <div class="grid" id="areaGrid"></div>
+
+    <div id="results">
+      <h2 class="section-title" id="resultsTitle"></h2>
+      <div id="causesList"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---------- Safety gate ---------- */
+const RED_FLAGS = [
+  { id: "numbness", text: "Numbness, tingling, or weakness that's spreading or persistent (not just a limb 'falling asleep')" },
+  { id: "bladder-bowel", text: "Loss of bladder or bowel control, or numbness in the groin/inner thigh area" },
+  { id: "chest-pain", text: "Chest pain or pressure, especially with shortness of breath, or pain spreading to the arm/jaw" },
+  { id: "fever", text: "Fever or chills along with the pain" },
+  { id: "trauma", text: "Recent significant trauma (fall, accident, direct blow) to the painful area" },
+  { id: "weight-loss", text: "Unexplained weight loss alongside the pain" },
+  { id: "worst-ever", text: "Sudden, severe pain that's the 'worst you've ever felt'" },
+  { id: "worsening", text: "Pain that keeps getting worse day after day, or wakes you up at night, with no improvement" },
+];
+
+function clearGate() {
+  sessionStorage.setItem('recoveryGuideCleared', 'true');
+  document.getElementById('gate-screen').classList.add('hidden');
+  document.getElementById('app').classList.add('visible');
+}
+
+function initGate() {
+  const flagList = document.getElementById('flagList');
+  RED_FLAGS.forEach(flag => {
+    const item = document.createElement('div');
+    item.className = 'flag-item';
+    item.innerHTML = `<input type="checkbox" id="flag-${flag.id}" value="${flag.id}"><label for="flag-${flag.id}">${flag.text}</label>`;
+    flagList.appendChild(item);
+  });
+
+  document.getElementById('gateContinueBtn').addEventListener('click', () => {
+    const anyChecked = RED_FLAGS.some(flag => document.getElementById(`flag-${flag.id}`).checked);
+    if (anyChecked) {
+      document.getElementById('gateQuestions').style.display = 'none';
+      document.getElementById('stopScreen').style.display = 'block';
+    } else {
+      clearGate();
+    }
+  });
+
+  document.getElementById('gateNABtn').addEventListener('click', () => {
+    RED_FLAGS.forEach(flag => { document.getElementById(`flag-${flag.id}`).checked = false; });
+    clearGate();
+  });
+
+  document.getElementById('backBtn').addEventListener('click', () => {
+    RED_FLAGS.forEach(flag => { document.getElementById(`flag-${flag.id}`).checked = false; });
+    document.getElementById('stopScreen').style.display = 'none';
+    document.getElementById('gateQuestions').style.display = 'block';
+  });
+
+  if (sessionStorage.getItem('recoveryGuideCleared') === 'true') {
+    document.getElementById('gate-screen').classList.add('hidden');
+    document.getElementById('app').classList.add('visible');
+  }
+}
+initGate();
+
+/* ---------- Body figure: single coordinate system shared by hotspots + massage markers ---------- */
+const BODY_SHAPE = `
+  <path d="M 35,34 L 65,34 Q 70,34 69,39 L 62,89 Q 61,94 56,94 L 44,94 Q 39,94 38,89 L 31,39 Q 30,34 35,34 Z" fill="var(--pine-tint)" stroke="var(--pine)" stroke-width="2"/>
+  <circle cx="50" cy="16" r="13" fill="var(--pine-tint)" stroke="var(--pine)" stroke-width="2"/>
+  <line x1="50" y1="29" x2="50" y2="35" stroke="var(--pine)" stroke-width="11" stroke-linecap="round"/>
+  <line x1="30" y1="34" x2="23" y2="64" stroke="var(--pine)" stroke-width="9" stroke-linecap="round"/>
+  <line x1="23" y1="64" x2="19" y2="90" stroke="var(--pine)" stroke-width="8" stroke-linecap="round"/>
+  <line x1="70" y1="34" x2="77" y2="64" stroke="var(--pine)" stroke-width="9" stroke-linecap="round"/>
+  <line x1="77" y1="64" x2="81" y2="90" stroke="var(--pine)" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="19" cy="90" r="5" fill="var(--pine)"/>
+  <circle cx="81" cy="90" r="5" fill="var(--pine)"/>
+  <line x1="39" y1="94" x2="41" y2="142" stroke="var(--pine)" stroke-width="11" stroke-linecap="round"/>
+  <line x1="41" y1="142" x2="42" y2="184" stroke="var(--pine)" stroke-width="9" stroke-linecap="round"/>
+  <line x1="61" y1="94" x2="59" y2="142" stroke="var(--pine)" stroke-width="11" stroke-linecap="round"/>
+  <line x1="59" y1="142" x2="58" y2="184" stroke="var(--pine)" stroke-width="9" stroke-linecap="round"/>
+  <ellipse cx="42" cy="195" rx="8" ry="5" fill="var(--pine)"/>
+  <ellipse cx="58" cy="195" rx="8" ry="5" fill="var(--pine)"/>
+`;
+document.getElementById('frontFigure').innerHTML = BODY_SHAPE;
+document.getElementById('backFigure').innerHTML = BODY_SHAPE;
+
+// Every region's exact landmark point(s) on the 0-100 x / 0-200 y figure — the SAME
+// coordinates used to draw the body above, so hotspots always land precisely on the part.
+const REGION_POINTS = {
+  jaw: [{ x: 50, y: 21 }],
+  neck: [{ x: 50, y: 30 }],
+  shoulder: [{ x: 30, y: 34 }, { x: 70, y: 34 }],
+  chest: [{ x: 50, y: 47 }],
+  "upper-back": [{ x: 50, y: 50 }],
+  elbow: [{ x: 23, y: 64 }, { x: 77, y: 64 }],
+  "wrist-hand": [{ x: 19, y: 90 }, { x: 81, y: 90 }],
+  abdomen: [{ x: 50, y: 68 }],
+  "lower-back": [{ x: 50, y: 76 }],
+  glutes: [{ x: 40, y: 100 }, { x: 60, y: 100 }],
+  hip: [{ x: 39, y: 94 }, { x: 61, y: 94 }],
+  hamstring: [{ x: 41, y: 118 }, { x: 59, y: 118 }],
+  quad: [{ x: 41, y: 118 }, { x: 59, y: 118 }],
+  "it-band": [{ x: 31, y: 118 }, { x: 69, y: 118 }],
+  knee: [{ x: 41, y: 142 }, { x: 59, y: 142 }],
+  calf: [{ x: 41, y: 163 }, { x: 59, y: 163 }],
+  "ankle-foot": [{ x: 42, y: 184 }, { x: 58, y: 184 }],
+};
+const REGION_VIEW = {
+  jaw: 'front', neck: 'front', shoulder: 'front', chest: 'front', "upper-back": 'back',
+  elbow: 'front', "wrist-hand": 'front', abdomen: 'front', "lower-back": 'back',
+  glutes: 'back', hip: 'front', hamstring: 'back', quad: 'front', "it-band": 'back',
+  knee: 'front', calf: 'back', "ankle-foot": 'front'
+};
+const BOTH_VIEW_KEYS = ['knee', 'calf', 'ankle-foot'];
+
+function miniFigureSVG(view, points) {
+  const glow = points.map(p => `
+    <circle cx="${p.x}" cy="${p.y}" r="11" fill="var(--accent)" opacity="0.3"/>
+    <circle cx="${p.x}" cy="${p.y}" r="5" fill="var(--accent)"/>
+  `).join('');
+  return `<svg viewBox="0 0 100 200">${BODY_SHAPE}${glow}</svg>`;
+}
+
+/* ---------- Stretch pose illustrations ---------- */
+function standingBase() {
+  return `<circle cx="60" cy="14" r="8" fill="var(--pine-tint)" stroke="var(--pine)" stroke-width="2"/>
+    <line x1="60" y1="22" x2="60" y2="55" stroke="var(--pine)" stroke-width="12" stroke-linecap="round"/>
+    <line x1="57" y1="55" x2="54" y2="96" stroke="var(--pine)" stroke-width="8" stroke-linecap="round"/>
+    <line x1="63" y1="55" x2="66" y2="96" stroke="var(--pine)" stroke-width="8" stroke-linecap="round"/>`;
+}
+function glow(x, y, r = 9) {
+  return `<circle cx="${x}" cy="${y}" r="${r}" fill="var(--accent)" opacity="0.32"/><circle cx="${x}" cy="${y}" r="${r*0.45}" fill="var(--accent)"/>`;
+}
+function limb(x1, y1, x2, y2, w = 6) {
+  return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="var(--pine)" stroke-width="${w}" stroke-linecap="round"/>`;
+}
+function wallLine(x = 92) {
+  return `<line x1="${x}" y1="2" x2="${x}" y2="98" stroke="var(--border)" stroke-width="3"/>`;
+}
+function groundLine(y = 97) {
+  return `<line x1="4" y1="${y}" x2="116" y2="${y}" stroke="var(--border)" stroke-width="3"/>`;
+}
+function wrap(inner) { return `<svg viewBox="0 0 120 100">${inner}</svg>`; }
+
+const POSES = {
+  "standing-hold-jaw": wrap(standingBase() + limb(58,26,50,20,5) + glow(52,15,7)),
+  "standing-tilt-neck": wrap(
+    `<circle cx="64" cy="15" r="8" fill="var(--pine-tint)" stroke="var(--pine)" stroke-width="2"/>` +
+    `<line x1="62" y1="23" x2="60" y2="55" stroke="var(--pine)" stroke-width="12" stroke-linecap="round"/>` +
+    limb(57,55,54,96) + limb(63,55,66,96) +
+    limb(58,30,44,40,5) + glow(54,24,7)
+  ),
+  "standing-chin-tuck": wrap(standingBase() + glow(60,16,8)),
+  "standing-arm-cross": wrap(standingBase() + limb(63,28,38,34,6) + limb(57,28,36,42,6) + glow(70,32,8)),
+  "standing-wall-arm": wrap(standingBase() + wallLine() + limb(63,28,88,20,6) + limb(88,20,88,6,6) + glow(66,35,8)),
+  "lying-roller": wrap(
+    groundLine(90) +
+    `<ellipse cx="55" cy="75" rx="10" ry="6" fill="var(--border)"/>` +
+    limb(30,60,55,72,12) + `<circle cx="24" cy="55" r="8" fill="var(--pine-tint)" stroke="var(--pine)" stroke-width="2"/>` +
+    limb(55,72,90,80,8) + limb(55,72,88,60,8) +
+    glow(48,68,8)
+  ),
+  "seated-twist": wrap(
+    `<circle cx="60" cy="18" r="8" fill="var(--pine-tint)" stroke="var(--pine)" stroke-width="2"/>` +
+    limb(60,26,60,58,12) + limb(60,58,44,90,8) + limb(60,58,76,90,8) +
+    limb(66,32,84,26,6) + limb(54,32,38,40,6) +
+    glow(60,42,8)
+  ),
+  "standing-arm-extend": wrap(standingBase() + limb(63,30,95,34,6) + limb(57,30,80,42,6) + glow(90,36,7)),
+  "kneeling-lunge": wrap(
+    groundLine() +
+    `<circle cx="46" cy="20" r="8" fill="var(--pine-tint)" stroke="var(--pine)" stroke-width="2"/>` +
+    limb(46,28,50,55,11) +
+    limb(50,55,66,60,8) + limb(66,60,70,96,8) +
+    limb(50,55,42,80,8) + limb(42,80,40,97,8) +
+    limb(52,34,34,44,6) +
+    glow(44,75,8)
+  ),
+  "childs-pose": wrap(
+    groundLine() +
+    `<circle cx="94" cy="72" r="8" fill="var(--pine-tint)" stroke="var(--pine)" stroke-width="2"/>` +
+    limb(88,74,55,80,10) + limb(55,80,40,90,8) + limb(55,80,40,68,8) +
+    limb(88,90,88,97,8) + limb(60,90,60,97,8) +
+    glow(70,80,8)
+  ),
+  "lying-figure4": wrap(
+    groundLine(90) +
+    `<circle cx="20" cy="70" r="8" fill="var(--pine-tint)" stroke="var(--pine)" stroke-width="2"/>` +
+    limb(28,70,55,70,12) +
+    limb(55,70,60,50,8) + limb(60,50,80,45,7) +
+    limb(55,70,78,72,8) + limb(78,72,72,50,7) +
+    glow(70,58,9)
+  ),
+  "all-fours": wrap(
+    groundLine() +
+    `<circle cx="94" cy="55" r="8" fill="var(--pine-tint)" stroke="var(--pine)" stroke-width="2"/>` +
+    limb(88,58,55,62,11) +
+    limb(88,68,88,96,7) + limb(60,68,60,96,7) +
+    limb(58,58,30,96,7) +
+    glow(72,60,8)
+  ),
+  "seated-figure4": wrap(
+    `<circle cx="60" cy="18" r="8" fill="var(--pine-tint)" stroke="var(--pine)" stroke-width="2"/>` +
+    limb(60,26,60,58,12) +
+    limb(60,58,40,66,9) + limb(40,66,70,70,7) +
+    limb(60,58,84,64,9) +
+    glow(55,68,8)
+  ),
+  "standing-forward-fold": wrap(
+    groundLine() +
+    `<circle cx="55" cy="34" r="8" fill="var(--pine-tint)" stroke="var(--pine)" stroke-width="2"/>` +
+    limb(56,42,60,66,12) +
+    limb(60,66,56,96,8) + limb(60,66,68,96,8) +
+    limb(55,44,40,60,6) +
+    glow(58,80,8)
+  ),
+  "standing-quad-pull": wrap(
+    groundLine() +
+    standingBase() +
+    limb(63,60,80,64,7) + limb(80,64,78,44,6) +
+    limb(58,30,84,50,6) +
+    glow(79,54,7)
+  ),
+  "standing-side-lean": wrap(
+    groundLine() +
+    `<circle cx="66" cy="16" r="8" fill="var(--pine-tint)" stroke="var(--pine)" stroke-width="2"/>` +
+    limb(64,24,58,55,11) +
+    limb(58,55,48,96,8) + limb(58,55,68,80,7) + limb(68,80,80,96,7) +
+    glow(52,72,8)
+  ),
+  "standing-wall-calf": wrap(
+    groundLine() +
+    wallLine() +
+    `<circle cx="58" cy="16" r="8" fill="var(--pine-tint)" stroke="var(--pine)" stroke-width="2"/>` +
+    limb(58,24,58,52,11) +
+    limb(58,52,50,96,8) + limb(58,52,74,70,7) + limb(74,70,90,72,7) +
+    limb(60,30,90,22,6) +
+    glow(42,80,8)
+  ),
+  "kneeling-sit-back": wrap(
+    groundLine() +
+    `<circle cx="58" cy="24" r="8" fill="var(--pine-tint)" stroke="var(--pine)" stroke-width="2"/>` +
+    limb(58,32,60,60,11) +
+    limb(60,60,42,72,8) + limb(42,72,60,88,7) +
+    limb(60,60,78,72,8) + limb(78,72,60,88,7) +
+    glow(50,80,8)
+  ),
+  "seated-ankle-circle": wrap(
+    `<circle cx="30" cy="30" r="8" fill="var(--pine-tint)" stroke="var(--pine)" stroke-width="2"/>` +
+    limb(32,38,45,60,10) +
+    limb(45,60,90,64,9) +
+    `<circle cx="98" cy="64" r="10" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 3"/>` +
+    `<circle cx="98" cy="54" r="3" fill="var(--accent)"/>`
+  ),
+};
+
+const CAUSE_POSE = {
+  "jaw__0": { pose: "standing-hold-jaw", caption: "hold 10s" },
+  "neck__0": { pose: "standing-tilt-neck", caption: "30s each side" },
+  "neck__1": { pose: "standing-chin-tuck", caption: "5–10s, repeat" },
+  "shoulder__0": { pose: "standing-arm-cross", caption: "30s each side" },
+  "shoulder__1": { pose: "standing-wall-arm", caption: "30s" },
+  "chest__0": { pose: "standing-wall-arm", caption: "30s each side" },
+  "chest__1": { pose: "lying-roller", caption: "gentle, breathe" },
+  "upper-back__0": { pose: "seated-twist", caption: "each side" },
+  "elbow__0": { pose: "standing-arm-extend", caption: "30s" },
+  "elbow__1": { pose: "standing-arm-extend", caption: "30s" },
+  "wrist-hand__0": { pose: "standing-arm-extend", caption: "hold, both ways" },
+  "wrist-hand__1": { pose: "standing-chin-tuck", caption: "gentle hold" },
+  "abdomen__0": { pose: "all-fours", caption: "slow, both ways" },
+  "abdomen__1": { pose: "kneeling-lunge", caption: "30–45s each side" },
+  "lower-back__0": { pose: "kneeling-lunge", caption: "30–45s each side" },
+  "lower-back__1": { pose: "childs-pose", caption: "hold, breathe" },
+  "glutes__0": { pose: "lying-figure4", caption: "30s each side" },
+  "glutes__1": { pose: "seated-figure4", caption: "hold, breathe" },
+  "hip__0": { pose: "lying-figure4", caption: "30s each side" },
+  "hip__1": { pose: "kneeling-lunge", caption: "30s each side" },
+  "hamstring__0": { pose: "standing-forward-fold", caption: "30s, gentle" },
+  "hamstring__1": { pose: "lying-figure4", caption: "30s each side" },
+  "quad__0": { pose: "standing-quad-pull", caption: "30s each side" },
+  "it-band__0": { pose: "standing-side-lean", caption: "30s each side" },
+  "knee__0": { pose: "standing-side-lean", caption: "30s each side" },
+  "knee__1": { pose: "lying-figure4", caption: "30s each side" },
+  "calf__0": { pose: "standing-wall-calf", caption: "30s each" },
+  "calf__1": { pose: "kneeling-sit-back", caption: "hold, breathe" },
+  "ankle-foot__0": { pose: "standing-wall-calf", caption: "30s each" },
+  "ankle-foot__1": { pose: "seated-ankle-circle", caption: "10 each way" },
+};
+
+/* ---------- Cause data ---------- */
+const DATA = {
+  jaw: { label: "Jaw / TMJ", causes: [
+    { name: "Masseter / temporalis overactivity (clenching, grinding)", likelihood: "Most common",
+      massage: "Masseter (cheek, along the jawline when you clench) and temporalis (side of head above the ear) — small circular pressure with fingertips.",
+      stretch: "Gentle jaw-opening stretch: mouth open to first resistance, plus tongue-on-roof-of-mouth relaxed jaw drops.",
+      strengthen: "Not a strengthening issue — focus on relaxation: conscious jaw unclenching through the day, and addressing night grinding (mouthguard, stress management) since strength work can worsen this." } ]
+  },
+  neck: { label: "Neck", causes: [
+    { name: "Upper trapezius / levator scapulae tightness", likelihood: "Most common",
+      massage: "Upper traps (top of shoulders into base of skull) and levator scapulae (side of neck, behind the ear line).",
+      stretch: "Gentle neck side-bend stretch, ear toward shoulder.",
+      strengthen: "Deep neck flexor holds (chin tucks) and scapular retraction (rows) to reduce forward-head posture load." },
+    { name: "Forward head posture from screen use", likelihood: "Very common",
+      massage: "Suboccipital muscles at the base of the skull — use fingers or a small ball against a wall.",
+      stretch: "Chin tuck + gentle extension, holding a 'double chin' position, repeated.",
+      strengthen: "Deep neck flexors and mid-back extensors (prone Y/T raises) to hold the head back over the shoulders." } ]
+  },
+  shoulder: { label: "Shoulder", causes: [
+    { name: "Rotator cuff overload / weakness", likelihood: "Most common",
+      massage: "Infraspinatus and teres minor (back of shoulder blade) — light pressure only, avoid deep pressure directly on the joint.",
+      stretch: "Cross-body shoulder stretch and sleeper stretch for internal rotation.",
+      strengthen: "External rotation with a light band, 2–3 sets of 15, to balance overactive internal rotators (pecs/lats)." },
+    { name: "Tight pecs / upper traps pulling shoulder forward", likelihood: "Common",
+      massage: "Pec minor (just below the collarbone) and upper trap.",
+      stretch: "Doorway pec stretch, arm at 90°, gentle lean forward.",
+      strengthen: "Scapular retraction (band pull-aparts, rows) to counter rounded-shoulder posture." } ]
+  },
+  chest: { label: "Chest", causes: [
+    { name: "Pec major/minor tightness from pushing-dominant training or desk posture", likelihood: "Most common",
+      massage: "Pec major (across the chest) and pec minor (just below the collarbone) — ball against a wall works well.",
+      stretch: "Doorway pec stretch, arm at 90°, gentle lean forward.",
+      strengthen: "Rows and rear-delt work to balance pushing-dominant training and pull the shoulders back." },
+    { name: "Costochondritis (rib cartilage irritation) — mimics chest pain", likelihood: "Less common, seek care if sharp or breathing-related",
+      massage: "Light pressure only along the sternum edge — avoid deep pressure if it's sharp or reproduces on breathing.",
+      stretch: "Gentle thoracic extension over a foam roller.",
+      strengthen: "Not a strengthening issue — if pain is sharp, worsens with breathing, or doesn't fit a muscular pattern, see a doctor to rule out cardiac or rib causes first." } ]
+  },
+  "upper-back": { label: "Upper Back", causes: [
+    { name: "Postural fatigue in mid-back extensors", likelihood: "Most common",
+      massage: "Rhomboids and mid-trapezius, between the shoulder blades — foam roller or lacrosse ball works well.",
+      stretch: "Thoracic rotation stretch (seated, rotate toward each side) and cat-cow.",
+      strengthen: "Prone Y-T-W raises and rows to build endurance in postural muscles." } ]
+  },
+  elbow: { label: "Elbow", causes: [
+    { name: "Lateral epicondylitis / tennis elbow (extensor overload)", likelihood: "Most common",
+      massage: "Wrist extensor muscle belly (top of forearm, just below the elbow) — cross-friction with thumb.",
+      stretch: "Wrist flexion stretch with elbow straight: pull the hand down and back, palm facing away.",
+      strengthen: "Eccentric wrist extensions (lower a light weight slowly) to build tendon capacity." },
+    { name: "Medial epicondylitis / golfer's elbow (flexor overload)", likelihood: "Common",
+      massage: "Wrist flexor muscle belly (inner forearm, below the elbow).",
+      stretch: "Wrist extension stretch with elbow straight: pull the hand back, palm facing you.",
+      strengthen: "Eccentric wrist flexions, light load, slow lowering phase." } ]
+  },
+  "wrist-hand": { label: "Wrist / Hand", causes: [
+    { name: "Forearm flexor/extensor tightness from typing or gripping", likelihood: "Most common",
+      massage: "Forearm flexors (palm-side) and extensors (back of forearm) — roll with a ball or opposite thumb.",
+      stretch: "Prayer stretch (palms together, lower hands while keeping palms touching) and reverse prayer stretch.",
+      strengthen: "Grip strengthening (stress ball, grippers) and wrist curls both directions to build balanced forearm strength." },
+    { name: "De Quervain's / thumb-side tendon irritation (repetitive gripping)", likelihood: "Less common",
+      massage: "Light massage along the thumb-side of the wrist, avoid direct pressure if sharp or swollen.",
+      stretch: "Gentle thumb-tuck wrist stretch (tuck thumb into fist, bend wrist toward little finger).",
+      strengthen: "Not a first step if swollen or sharp — reduce repetitive gripping load and see a professional if it persists beyond 1–2 weeks." } ]
+  },
+  abdomen: { label: "Abdomen / Core", causes: [
+    { name: "Core/deep stabiliser weakness (bracing dysfunction)", likelihood: "Most common",
+      massage: "Not typically a massage target — this pattern is a strength/coordination gap rather than tight tissue.",
+      stretch: "Cat-cow and gentle rotational stretches to keep the trunk mobile.",
+      strengthen: "Dead bugs, planks, and Pallof presses to build anti-extension and anti-rotation core control." },
+    { name: "Hip flexor/psoas referral felt as abdominal tightness", likelihood: "Common",
+      massage: "Psoas (deep, along the inner hip crease) — light pressure, lying down, only if comfortable.",
+      stretch: "Kneeling hip flexor stretch.",
+      strengthen: "Glute bridges and dead bugs to reduce hip flexor dominance." } ]
+  },
+  "lower-back": { label: "Lower Back", causes: [
+    { name: "Tight hip flexors + weak glutes (anterior pelvic tilt pattern)", likelihood: "Most common",
+      massage: "Hip flexors (front of hip) and QL (side of lower back, between ribs and pelvis).",
+      stretch: "Kneeling hip flexor stretch.",
+      strengthen: "Glute bridges and bird-dogs to build glute and core support for the lower back." },
+    { name: "Core/deep stabiliser weakness", likelihood: "Common",
+      massage: "Erector spinae (muscles running alongside the spine) — light rolling, avoid direct spine pressure.",
+      stretch: "Child's pose and gentle knee-to-chest stretch.",
+      strengthen: "Dead bugs and planks to build deep core stability without spinal loading." } ]
+  },
+  glutes: { label: "Glutes", causes: [
+    { name: "Piriformis tightness (sciatic-type referral)", likelihood: "Most common",
+      massage: "Piriformis (deep in the glute, roughly halfway between the tailbone and hip bone) — ball or lacrosse ball, sit on it and shift weight gently.",
+      stretch: "Figure-4 stretch (lying on back, ankle on opposite knee, pull thigh toward chest).",
+      strengthen: "Glute bridges and clamshells to build glute strength and reduce piriformis overcompensation." },
+    { name: "General glute weakness from prolonged sitting", likelihood: "Common",
+      massage: "Glute max (main glute mass) with a ball, moderate pressure.",
+      stretch: "Seated figure-4 stretch or pigeon pose.",
+      strengthen: "Glute bridges, hip thrusts, and banded lateral walks." } ]
+  },
+  hip: { label: "Hip", causes: [
+    { name: "Glute medius weakness (hip drop pattern)", likelihood: "Most common",
+      massage: "Glute medius (side of hip, below the hip bone) with a ball against a wall or floor.",
+      stretch: "Figure-4 stretch (ankle on opposite knee, gentle lean forward).",
+      strengthen: "Side-lying leg raises and banded lateral walks." },
+    { name: "Tight hip flexors / TFL", likelihood: "Common",
+      massage: "TFL (front-outer hip) and hip flexors.",
+      stretch: "Kneeling hip flexor stretch with a slight side-bend away from the tight hip.",
+      strengthen: "Glute bridges to balance hip flexor dominance." } ]
+  },
+  hamstring: { label: "Hamstring", causes: [
+    { name: "Hamstring tightness/overload from sprinting or sudden load increase", likelihood: "Most common",
+      massage: "Hamstring muscle belly (back of thigh) — foam roll, avoid direct pressure on a recent acute strain.",
+      stretch: "Standing or seated hamstring stretch, gentle — avoid aggressive stretching if it was a recent strain.",
+      strengthen: "Nordic curls or Romanian deadlifts, built up gradually, since eccentric strength is the main protective factor against strains." },
+    { name: "Weak glutes causing hamstring overcompensation", likelihood: "Common",
+      massage: "Glute max alongside the hamstring.",
+      stretch: "Figure-4 stretch for the glute.",
+      strengthen: "Hip thrusts and glute bridges to shift load off the hamstring." } ]
+  },
+  quad: { label: "Quad / Front Thigh", causes: [
+    { name: "Quad tightness from training load or running volume increase", likelihood: "Most common",
+      massage: "Quad muscle belly (front of thigh) — foam roll, moderate pressure.",
+      stretch: "Standing quad stretch (heel to glute, knee pointing down).",
+      strengthen: "Squats and step-downs, progressed gradually, to build tissue capacity." } ]
+  },
+  "it-band": { label: "IT Band (Outer Thigh)", causes: [
+    { name: "IT band syndrome from weak hip abductors (common in runners)", likelihood: "Most common",
+      massage: "Glute medius and TFL (where the IT band originates) rather than the IT band itself — the band is dense connective tissue and doesn't respond much to direct rolling.",
+      stretch: "Standing IT band stretch (cross affected leg behind the other, lean away) — helpful but secondary to strength work.",
+      strengthen: "Banded lateral walks and single-leg glute bridges — hip abductor weakness is the primary driver, so this matters more than stretching or rolling." } ]
+  },
+  knee: { label: "Knee", causes: [
+    { name: "Quad/VMO weakness or imbalance", likelihood: "Most common",
+      massage: "Quads (front of thigh) and IT band (outer thigh, roll gently — it's dense tissue).",
+      stretch: "Standing quad stretch and IT band stretch (cross one leg behind the other, lean away).",
+      strengthen: "Terminal knee extensions and step-downs to build control around the knee joint." },
+    { name: "Weak glutes causing inward knee collapse", likelihood: "Common",
+      massage: "Glute medius and outer hip.",
+      stretch: "Figure-4 stretch.",
+      strengthen: "Banded lateral walks and single-leg glute bridges." } ]
+  },
+  calf: { label: "Calf / Shin", causes: [
+    { name: "Calf tightness from training load increase", likelihood: "Most common",
+      massage: "Gastrocnemius and soleus (calf) with a foam roller or ball.",
+      stretch: "Wall calf stretch — straight-leg version for gastrocnemius, bent-knee version for soleus.",
+      strengthen: "Calf raises (straight and bent knee) built up gradually to improve tendon capacity." },
+    { name: "Shin splints from weak tibialis anterior", likelihood: "Common",
+      massage: "Tibialis anterior (front of shin, outside the shin bone) — light pressure.",
+      stretch: "Kneeling shin stretch (sit back on heels, tops of feet flat).",
+      strengthen: "Toe raises and resisted dorsiflexion (band around foot) to build shin strength." } ]
+  },
+  "ankle-foot": { label: "Ankle / Foot", causes: [
+    { name: "Plantar fasciitis (weak intrinsic foot muscles + tight calf)", likelihood: "Most common",
+      massage: "Plantar fascia (sole of the foot, heel to arch) — roll on a frozen water bottle or ball, and calf (referring tightness).",
+      stretch: "Calf stretch (wall stretch, both knee positions) and plantar fascia stretch (pull toes back toward shin).",
+      strengthen: "Towel scrunches and short-foot exercises (arch-lifting) to build intrinsic foot strength; calf raises to reduce tension on the fascia." },
+    { name: "Weak ankle stabilisers (recurring rolled ankles)", likelihood: "Common",
+      massage: "Peroneals (outer lower leg) — light rolling.",
+      stretch: "Ankle circles and calf stretch.",
+      strengthen: "Single-leg balance work and resisted ankle eversion (band) to rebuild stability after a sprain." } ]
+  }
+};
+
+function likelihoodTone(text) {
+  const t = text.toLowerCase();
+  if (t.includes('seek care') || t.includes('less common')) return 'tone-caution';
+  if (t.includes('most common')) return 'tone-primary';
+  return 'tone-neutral';
+}
+
+/* ---------- Hotspots (derived from REGION_POINTS — always aligned to the figure) ---------- */
+const HOTSPOTS = { front: [], back: [] };
+Object.entries(REGION_POINTS).forEach(([key, pts]) => {
+  const primary = REGION_VIEW[key];
+  pts.forEach(p => HOTSPOTS[primary].push({ key, top: p.y / 2, left: p.x }));
+  if (BOTH_VIEW_KEYS.includes(key)) {
+    const other = primary === 'front' ? 'back' : 'front';
+    pts.forEach(p => HOTSPOTS[other].push({ key, top: p.y / 2, left: p.x }));
+  }
+});
+
+function buildHotspots(containerId, list) {
+  const container = document.getElementById(containerId);
+  list.forEach(spot => {
+    const btn = document.createElement('button');
+    btn.className = 'hotspot';
+    btn.type = 'button';
+    btn.dataset.key = spot.key;
+    btn.style.top = spot.top + '%';
+    btn.style.left = spot.left + '%';
+    btn.title = DATA[spot.key].label;
+    btn.addEventListener('click', () => toggleKey(spot.key));
+    container.appendChild(btn);
+  });
+}
+buildHotspots('frontHotspots', HOTSPOTS.front);
+buildHotspots('backHotspots', HOTSPOTS.back);
+
+document.getElementById('frontViewBtn').addEventListener('click', () => {
+  document.getElementById('frontViewBtn').classList.add('active');
+  document.getElementById('backViewBtn').classList.remove('active');
+  document.getElementById('frontFigure').classList.add('active');
+  document.getElementById('frontHotspots').classList.add('active');
+  document.getElementById('backFigure').classList.remove('active');
+  document.getElementById('backHotspots').classList.remove('active');
+});
+document.getElementById('backViewBtn').addEventListener('click', () => {
+  document.getElementById('backViewBtn').classList.add('active');
+  document.getElementById('frontViewBtn').classList.remove('active');
+  document.getElementById('backFigure').classList.add('active');
+  document.getElementById('backHotspots').classList.add('active');
+  document.getElementById('frontFigure').classList.remove('active');
+  document.getElementById('frontHotspots').classList.remove('active');
+});
+
+/* ---------- Area chips, selection, results ---------- */
+const grid = document.getElementById('areaGrid');
+const results = document.getElementById('results');
+const resultsTitle = document.getElementById('resultsTitle');
+const causesList = document.getElementById('causesList');
+const selectedKeys = new Set();
+
+Object.entries(DATA).forEach(([key, area]) => {
+  const btn = document.createElement('button');
+  btn.className = 'area-btn';
+  btn.textContent = area.label;
+  btn.dataset.key = key;
+  btn.addEventListener('click', () => toggleKey(key));
+  grid.appendChild(btn);
+});
+
+document.getElementById('clearBtn').addEventListener('click', () => {
+  selectedKeys.clear();
+  refreshSelectionUI();
+  renderResults();
+});
+
+function toggleKey(key) {
+  if (selectedKeys.has(key)) selectedKeys.delete(key); else selectedKeys.add(key);
+  refreshSelectionUI();
+  renderResults();
+}
+function refreshSelectionUI() {
+  document.querySelectorAll('[data-key]').forEach(el => {
+    el.classList.toggle('active', selectedKeys.has(el.dataset.key));
+  });
+}
+
+function renderResults(highlightId) {
+  if (selectedKeys.size === 0) {
+    results.classList.remove('visible');
+    causesList.innerHTML = '';
+    return;
+  }
+
+  const count = selectedKeys.size;
+  resultsTitle.textContent = count > 1
+    ? `${count} selected areas — likely causes`
+    : `${DATA[[...selectedKeys][0]].label} pain — likely causes`;
+
+  causesList.innerHTML = '';
+
+  Object.entries(DATA).forEach(([key, area]) => {
+    if (!selectedKeys.has(key)) return;
+
+    if (count > 1) {
+      const heading = document.createElement('h3');
+      heading.className = 'region-heading';
+      heading.textContent = area.label;
+      causesList.appendChild(heading);
+    }
+
+    area.causes.forEach((cause, idx) => {
+      const causeId = `${key}__${idx}`;
+      const poseInfo = CAUSE_POSE[causeId];
+      const poseSVG = poseInfo ? POSES[poseInfo.pose] : '';
+      const view = REGION_VIEW[key];
+      const miniFig = miniFigureSVG(view, REGION_POINTS[key]);
+
+      const card = document.createElement('div');
+      card.className = 'cause-card';
+      card.dataset.causeId = causeId;
+      card.innerHTML = `
+        <div class="likelihood-pill ${likelihoodTone(cause.likelihood)}">${cause.likelihood}</div>
+        <h3 class="cause-name">${cause.name}</h3>
+
+        <div class="step-block">
+          <div class="step-head"><span class="step-num">1</span><span class="step-label">Massage</span></div>
+          <div class="illustrated-row">
+            <div class="mini-figure-box">${miniFig}</div>
+            <p>${cause.massage}</p>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-head"><span class="step-num">2</span><span class="step-label">Stretch</span></div>
+          <div class="illustrated-row">
+            <div class="pose-box">${poseSVG}</div>
+            <div>
+              <p>${cause.stretch}</p>
+              ${poseInfo ? `<span class="caption-badge">${poseInfo.caption}</span>` : ''}
+            </div>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-head"><span class="step-num">3</span><span class="step-label">Strengthen</span></div>
+          <p>${cause.strengthen}</p>
+        </div>
+      `;
+      causesList.appendChild(card);
+    });
+  });
+
+  results.classList.add('visible');
+
+  if (highlightId) {
+    const target = causesList.querySelector(`[data-cause-id="${highlightId}"]`);
+    if (target) {
+      target.classList.add('highlight');
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => target.classList.remove('highlight'), 2500);
+      return;
+    }
+  }
+  results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+/* ---------- Muscle/tendon search ---------- */
+const SEARCH_INDEX = [];
+Object.entries(DATA).forEach(([key, area]) => {
+  area.causes.forEach((cause, idx) => { SEARCH_INDEX.push({ key, idx, name: cause.name, regionLabel: area.label }); });
+});
+
+const searchInput = document.getElementById('muscleSearch');
+const searchResultsEl = document.getElementById('searchResults');
+
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.trim().toLowerCase();
+  if (q.length < 2) {
+    searchResultsEl.classList.remove('visible');
+    searchResultsEl.innerHTML = '';
+    return;
+  }
+  const matches = SEARCH_INDEX.filter(item =>
+    item.name.toLowerCase().includes(q) || item.regionLabel.toLowerCase().includes(q)
+  ).slice(0, 8);
+
+  searchResultsEl.innerHTML = '';
+  if (matches.length === 0) {
+    const noMatch = document.createElement('div');
+    noMatch.className = 'search-no-match';
+    noMatch.textContent = "No exact match — try browsing by body area below instead.";
+    searchResultsEl.appendChild(noMatch);
+  } else {
+    matches.forEach(match => {
+      const item = document.createElement('button');
+      item.className = 'search-result-item';
+      item.type = 'button';
+      item.innerHTML = `${match.name}<br><span class="sr-region">${match.regionLabel}</span>`;
+      item.addEventListener('click', () => {
+        selectedKeys.add(match.key);
+        refreshSelectionUI();
+        renderResults(`${match.key}__${match.idx}`);
+        searchInput.value = '';
+        searchResultsEl.classList.remove('visible');
+        searchResultsEl.innerHTML = '';
+      });
+      searchResultsEl.appendChild(item);
+    });
+  }
+  searchResultsEl.classList.add('visible');
+});
+
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.search-section')) searchResultsEl.classList.remove('visible');
+});
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  });
+}
+</script>
+</body>
+</html>
